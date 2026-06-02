@@ -30,20 +30,20 @@ export function ArchitectureSection() {
   return (
     <section id="architecture">
       <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-4">
-        <SectionHeader 
-          tag="ARCHITECTURE.CENTER" 
-          title="System Architecture" 
+        <SectionHeader
+          tag="ARCHITECTURE.CENTER"
+          title="System Architecture"
           subtitle="Interactive diagrams for each deployed service. Drag, zoom, and trace data flow."
           className="mb-0"
         />
-        
+
         <div className="flex gap-1 font-mono text-[10px] uppercase p-1 rounded-md border border-border bg-black/20">
           <button className="px-3 py-1.5 rounded bg-primary/20 text-primary border border-primary/30">AI - INTERVIEW</button>
           <button className="px-3 py-1.5 rounded text-muted hover:text-white transition-colors">ERROR - MITIGATION</button>
           <button className="px-3 py-1.5 rounded text-muted hover:text-white transition-colors">LIFEBRIDGE</button>
         </div>
       </div>
-      
+
       <Card className="h-[500px] rounded-xl overflow-hidden relative border border-border">
         <div className="absolute top-4 left-4 z-10 flex items-center gap-2 font-mono text-[10px] text-muted">
           <div className="flex items-center gap-1.5">
@@ -53,11 +53,11 @@ export function ArchitectureSection() {
           </div>
           <span className="ml-2">~/architecture/ai-interview.json</span>
         </div>
-        
-        <ReactFlow 
-          nodes={initialNodes} 
-          edges={initialEdges} 
-          fitView 
+
+        <ReactFlow
+          nodes={initialNodes}
+          edges={initialEdges}
+          fitView
           colorMode="dark"
         >
           <Background color="#1A2332" gap={16} />

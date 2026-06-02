@@ -66,24 +66,24 @@ export function ServicesSection() {
         <Activity className="w-4 h-4 text-primary" />
         <span className="text-muted font-mono text-xs">ACTIVE v1.0.0 ap-south-1</span>
       </div>
-      
+
       <div className="flex flex-col gap-8">
         {projects.map((project, idx) => (
           <Card key={idx} className="flex flex-col md:flex-row overflow-hidden border-border/50">
             <div className="flex-1 p-8 border-b md:border-b-0 md:border-r border-border/50">
               <h3 className="text-2xl md:text-3xl font-bold mb-1">{project.title}</h3>
               <p className="text-primary font-mono text-xs mb-6">{project.domain}</p>
-              
+
               <p className="text-muted text-sm leading-relaxed mb-8 max-w-xl">
                 {project.desc}
               </p>
-              
+
               <div className="flex flex-wrap gap-4 font-mono text-xs text-muted mb-10">
                 {project.tags.map(tag => (
                   <span key={tag} className="px-2 py-1 bg-white/[0.03] rounded border border-white/[0.05]">{tag}</span>
                 ))}
               </div>
-              
+
               <div className="flex flex-wrap gap-3">
                 <a href={project.liveUrl} className="flex items-center gap-2 px-4 py-1.5 border border-primary/30 rounded text-xs font-mono text-white hover:bg-primary/10 transition-colors">
                   <ExternalLink className="w-3.5 h-3.5" /> LIVE
@@ -93,10 +93,10 @@ export function ServicesSection() {
                 </a>
               </div>
             </div>
-            
+
             <div className="w-full md:w-[350px] bg-black/20 p-8 flex flex-col">
               <p className="text-muted font-mono text-[10px] uppercase mb-8 tracking-widest">Runtime Metrics</p>
-              
+
               <div className="grid grid-cols-3 gap-4 mb-8">
                 {project.metrics.map((metric, midx) => (
                   <div key={midx}>
@@ -105,7 +105,7 @@ export function ServicesSection() {
                   </div>
                 ))}
               </div>
-              
+
               <div className="flex flex-col gap-4 text-xs font-mono">
                 {project.capabilities.map((cap, cidx) => (
                   <div key={cidx} className="flex justify-between items-center border-b border-border/50 pb-2 last:border-0 last:pb-0">

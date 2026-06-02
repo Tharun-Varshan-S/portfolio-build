@@ -34,12 +34,12 @@ export function CredentialsSection() {
 
   return (
     <section>
-      <SectionHeader 
-        tag="CREDENTIALS.VERIFIED" 
-        title="Verified System Credentials" 
+      <SectionHeader
+        tag="CREDENTIALS.VERIFIED"
+        title="Verified System Credentials"
         subtitle="Certifications cryptographically attested via issuer registries."
       />
-      
+
       <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
         {credentials.map((cred, idx) => (
           <Card key={idx} className="p-6 flex flex-col justify-between hover:border-primary/30 transition-colors group cursor-pointer">
@@ -50,7 +50,7 @@ export function CredentialsSection() {
               <p className="font-mono text-[10px] text-muted uppercase tracking-wider mb-2">{cred.issuer}</p>
               <h4 className="font-semibold text-sm leading-tight mb-8 group-hover:text-primary transition-colors">{cred.title}</h4>
             </div>
-            
+
             <div className="flex items-center gap-2 text-muted">
               <Link2 className="w-3 h-3" />
               <p className="font-mono text-[8px] truncate">{cred.hash}</p>

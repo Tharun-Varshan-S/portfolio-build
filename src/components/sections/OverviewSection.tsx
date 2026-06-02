@@ -5,11 +5,11 @@ import { Target, Layers, Code2 } from "lucide-react"
 export function OverviewSection() {
   return (
     <section>
-      <SectionHeader 
-        tag="OVERVIEW" 
-        title="Operational Snapshot" 
+      <SectionHeader
+        tag="OVERVIEW"
+        title="Operational Snapshot"
       />
-      
+
       <div className="grid md:grid-cols-3 gap-6">
         <Card className="p-6 flex flex-col">
           <div className="flex justify-between items-start mb-4">

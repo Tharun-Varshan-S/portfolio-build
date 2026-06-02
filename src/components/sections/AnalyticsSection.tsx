@@ -23,9 +23,9 @@ export function AnalyticsSection() {
   return (
     <section id="analytics">
       <div className="flex justify-between items-end mb-8">
-        <SectionHeader 
-          tag="ANALYTICS.CODING" 
-          title="Coding Analytics" 
+        <SectionHeader
+          tag="ANALYTICS.CODING"
+          title="Coding Analytics"
           subtitle="Engineering throughput across competitive programming platforms."
           className="mb-0"
         />
@@ -34,7 +34,7 @@ export function AnalyticsSection() {
           <p className="text-2xl font-bold tracking-tight">1,380+</p>
         </div>
       </div>
-      
+
       <div className="grid md:grid-cols-3 gap-6 mb-6">
         <Card className="p-6 flex items-center justify-between">
           <div>
@@ -91,27 +91,27 @@ export function AnalyticsSection() {
             <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-success" /> CodeChef</span>
           </div>
         </div>
-        
+
         <div className="h-[300px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
               <defs>
                 <linearGradient id="colorLeet" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.3}/>
-                  <stop offset="95%" stopColor="#3B82F6" stopOpacity={0}/>
+                  <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.3} />
+                  <stop offset="95%" stopColor="#3B82F6" stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="colorSkill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#00E5FF" stopOpacity={0.3}/>
-                  <stop offset="95%" stopColor="#00E5FF" stopOpacity={0}/>
+                  <stop offset="5%" stopColor="#00E5FF" stopOpacity={0.3} />
+                  <stop offset="95%" stopColor="#00E5FF" stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="colorChef" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#00FF66" stopOpacity={0.3}/>
-                  <stop offset="95%" stopColor="#00FF66" stopOpacity={0}/>
+                  <stop offset="5%" stopColor="#00FF66" stopOpacity={0.3} />
+                  <stop offset="95%" stopColor="#00FF66" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: "#8B9BB4", fontFamily: "monospace" }} />
               <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: "#8B9BB4", fontFamily: "monospace" }} />
-              <Tooltip 
+              <Tooltip
                 contentStyle={{ backgroundColor: "#0A0E17", borderColor: "#1A2332", borderRadius: "8px", color: "#fff" }}
                 itemStyle={{ fontFamily: "monospace", fontSize: "12px" }}
               />

@@ -43,15 +43,15 @@ export function StackSection() {
 
   return (
     <section id="stack">
-      <SectionHeader 
-        tag="INFRASTRUCTURE.LAYERS" 
-        title="Tech Infrastructure" 
+      <SectionHeader
+        tag="INFRASTRUCTURE.LAYERS"
+        title="Tech Infrastructure"
       />
-      
+
       <div className="flex flex-col">
         {layers.map((layer, idx) => (
-          <div 
-            key={idx} 
+          <div
+            key={idx}
             className="flex flex-col md:flex-row items-start md:items-center py-6 border-b border-border/50 gap-6 md:gap-12 hover:bg-white/[0.02] transition-colors px-4 -mx-4 rounded-lg"
           >
             <div className="w-full md:w-64 flex items-center gap-4">
@@ -63,7 +63,7 @@ export function StackSection() {
                 <p className="text-[10px] font-mono text-muted uppercase mt-0.5">{layer.subtitle}</p>
               </div>
             </div>
-            
+
             <div className="flex flex-wrap gap-x-6 gap-y-3 flex-1 font-mono text-xs text-muted">
               {layer.tags.map(tag => (
                 <span key={tag} className="hover:text-white transition-colors">{tag}</span>
