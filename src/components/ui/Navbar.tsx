@@ -14,10 +14,9 @@ export function Navbar() {
   // Track active page links
   const navLinks = [
     { name: "HOME", href: "/" },
-    { name: "SYSTEMS", href: "/projects" },
-    { name: "ARCHITECTURE", href: "/architecture" },
-    { name: "INFRASTRUCTURE", href: "/infrastructure" },
-    { name: "ANALYTICS", href: "/analytics" },
+    { name: "PROJECTS", href: "/projects" },
+    { name: "TECH STACK", href: "/tech-stack" },
+    { name: "CODING PROFILE", href: "/coding-profile" },
     { name: "RESUME", href: "/resume" },
     { name: "CONTACT", href: "/contact" }
   ]

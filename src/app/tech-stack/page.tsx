@@ -19,12 +19,12 @@ interface InfrastructureCategory {
   nodes: TechNode[]
 }
 
-export default function InfrastructurePage() {
+export default function TechStackPage() {
   const [hoveredTech, setHoveredTech] = useState<{ name: string; desc: string; relation: string; cat: string } | null>({
     name: "TypeScript",
     desc: "A strongly-typed programming language that builds on JavaScript, giving structured safety to system scripts.",
     relation: "Compiles standard Express server environments and binds strict React flow state variables.",
-    cat: "BACKEND INFRASTRUCTURE"
+    cat: "BACKEND STACK"
   })
 
   // Grouped Infrastructure Layer Map
@@ -97,9 +97,9 @@ export default function InfrastructurePage() {
       {/* Page Header */}
       <div className="flex flex-col gap-6 max-w-3xl">
         <h1 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight leading-none">
-          Infrastructure <br />
+          Tech Stack <br />
           <span className="text-muted">
-            Map
+            Ecosystem Map
           </span>
         </h1>
         <p className="text-base text-muted leading-relaxed max-w-xl">

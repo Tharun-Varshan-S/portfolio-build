@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { BarChart, AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts"
 import { Cpu, Terminal, Calendar, Award, ShieldAlert, Activity } from "lucide-react"
 
-export default function AnalyticsPage() {
+export default function CodingProfilePage() {
   const [hoveredDay, setHoveredDay] = useState<{ date: string; count: number } | null>(null)
 
   const platforms = [
@@ -58,7 +58,7 @@ export default function AnalyticsPage() {
       {/* Page Header */}
       <div className="flex flex-col gap-6 max-w-3xl">
         <h1 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight leading-none">
-          Analytics & <br />
+          Coding Profile & <br />
           <span className="text-muted">
             Telemetry
           </span>

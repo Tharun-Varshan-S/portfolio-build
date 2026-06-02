@@ -1,250 +1,278 @@
 "use client"
 
-import { useRef } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { ArrowDown, Code2, Cpu, Database, Network, ArrowRight } from "lucide-react"
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
+import { ArrowRight, Terminal, Download, FileText, ChevronRight } from "lucide-react"
 import { ActivityStreamSection } from "@/components/sections/ActivityStreamSection"
 
+const BOOT_SEQUENCE = [
+  "Initializing tvs_os kernel v3.0.1...",
+  "Cache loaded: LeetCode [500+] • CodeChef [1678]",
+  "Syncing distributed backend microservices...",
+  "Formulating AI decision matrices...",
+  "Integration secure. Injecting graphical overlay...",
+  "BOOTING SYSTEM..."
+]
+
+const CONSOLE_ITEMS = [
+  "> 500+ Problems Solved",
+  "> Rating 1678",
+  "> Winner - CoderAct",
+  "> Building AI Systems",
+  "> Learning Distributed Systems",
+  "> Deploying New Features"
+]
+
 export default function Home() {
+  const [isBooting, setIsBooting] = useState(true)
+  const [bootStep, setBootStep] = useState(0)
+  const [charIndex, setCharIndex] = useState(0)
+  const [consoleIndex, setConsoleIndex] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
 
-  // Configure Scroll-linked animations using Framer Motion
+  // Boot sequence logic with typing effect
+  useEffect(() => {
+    const hasBooted = sessionStorage.getItem("hasBooted")
+    if (hasBooted) {
+      setIsBooting(false)
+      return
+    }
+
+    if (bootStep >= BOOT_SEQUENCE.length) {
+      setTimeout(() => {
+        setIsBooting(false)
+        sessionStorage.setItem("hasBooted", "true")
+      }, 600)
+      return
+    }
+
+    const currentLine = BOOT_SEQUENCE[bootStep]
+    
+    if (charIndex < currentLine.length) {
+      const timeout = setTimeout(() => {
+        setCharIndex(prev => prev + 1)
+      }, Math.random() * 30 + 10) // Fast typing effect
+      return () => clearTimeout(timeout)
+    } else {
+      const timeout = setTimeout(() => {
+        setBootStep(prev => prev + 1)
+        setCharIndex(0)
+      }, 300) // Pause at end of line
+      return () => clearTimeout(timeout)
+    }
+  }, [bootStep, charIndex])
+
+  // Console rotation logic
+  useEffect(() => {
+    if (isBooting) return
+    const interval = setInterval(() => {
+      setConsoleIndex(prev => (prev + 1) % CONSOLE_ITEMS.length)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [isBooting])
+
+  // Scroll animations
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
   })
 
-  // Transformed properties for cinematic screens
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0])
-  const heroScale = useTransform(scrollYProgress, [0, 0.15], [1, 0.95])
-  const heroY = useTransform(scrollYProgress, [0, 0.15], [0, -50])
-
-  const stats1Opacity = useTransform(scrollYProgress, [0.15, 0.25, 0.35], [0, 1, 0])
-  const stats1Scale = useTransform(scrollYProgress, [0.15, 0.25, 0.35], [0.9, 1, 1.05])
-
-  const stats2Opacity = useTransform(scrollYProgress, [0.35, 0.45, 0.55], [0, 1, 0])
-  const stats2Scale = useTransform(scrollYProgress, [0.35, 0.45, 0.55], [0.9, 1, 1.05])
-
-  const pillarsOpacity = useTransform(scrollYProgress, [0.55, 0.65, 0.75], [0, 1, 0])
-  const pillarsScale = useTransform(scrollYProgress, [0.55, 0.65, 0.75], [0.9, 1, 1.05])
-
-  const missionOpacity = useTransform(scrollYProgress, [0.75, 0.85, 0.95], [0, 1, 0])
-  const missionScale = useTransform(scrollYProgress, [0.75, 0.85, 0.95], [0.9, 1, 1.02])
-
-  // Journey milestones data
-  const milestones = [
-    { year: "2024", phase: "DSA Foundations", icon: Code2, desc: "Mastered algorithmic complexity, advanced data structures, and foundational software engineering principles.", color: "from-border to-transparent" },
-    { year: "2025", phase: "Full Stack Development", icon: Database, desc: "Architected modern web architectures, state management systems, and high-performance relational databases.", color: "from-border to-transparent" },
-    { year: "2026", phase: "AI Applications", icon: Cpu, desc: "Integrated Large Language Models, engineered semantic search graphs, and automated evaluation metrics.", color: "from-border to-transparent" },
-    { year: "2027", phase: "MLOps & Distributed Systems", icon: Network, desc: "Configured resilient execution containers, message broker channels, and automated deployment nodes.", color: "from-border to-transparent" },
-    { year: "2028", phase: "AI Systems Engineering", icon: Cpu, desc: "Designing scalable AI backends, optimized storage clusters, and production-grade LLM workflows.", color: "from-border to-transparent" }
-  ]
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
+  const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95])
+  const heroY = useTransform(scrollYProgress, [0, 0.2], [0, -50])
 
   return (
-    <div ref={containerRef} className="relative w-full min-h-screen bg-background select-none">
+    <div ref={containerRef} className="relative w-full min-h-screen bg-background select-none overflow-x-hidden">
       
-      {/* Background Aurora Mesh Glow - Reduced Intensity */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-foreground/[0.02] blur-[120px] pointer-events-none z-0" />
-      <div className="absolute top-3/4 left-1/3 w-[600px] h-[300px] rounded-full bg-secondary/[0.02] blur-[100px] pointer-events-none z-0" />
-
-      {/* Cinematic Scrollytelling Panels Container */}
-      <div className="relative z-10 w-full">
-        
-        {/* ==================================================== */}
-        {/* SCREEN 1: Hero Opener */}
-        {/* ==================================================== */}
-        <motion.section 
-          style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
-          className="h-screen w-full flex flex-col justify-center items-center px-6 relative"
-        >
-          <div className="max-w-4xl w-full text-center flex flex-col items-center gap-6">
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground leading-tight"
-            >
-              Tharun Varshan S
-            </motion.h1>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-lg md:text-xl font-medium text-muted tracking-wide"
-            >
-              AI Systems Backend Engineer
-            </motion.p>
-            
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.8 }}
-              className="text-sm text-muted max-w-md leading-relaxed mt-2"
-            >
-              Building intelligent systems, scalable backends, and production-grade AI applications.
-            </motion.p>
-          </div>
-
+      <AnimatePresence mode="wait">
+        {isBooting ? (
           <motion.div 
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-            className="absolute bottom-12 flex flex-col items-center gap-2 cursor-pointer text-muted hover:text-foreground transition-colors"
+            key="boot"
+            exit={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-background"
           >
-            <span className="text-xs font-medium tracking-wide">Scroll to explore</span>
-            <ArrowDown className="w-4 h-4 text-muted" />
-          </motion.div>
-        </motion.section>
-
-        {/* ==================================================== */}
-        {/* SCREEN 2: Stat reveal - Problems solved */}
-        {/* ==================================================== */}
-        <motion.section 
-          style={{ opacity: stats1Opacity, scale: stats1Scale }}
-          className="h-screen w-full fixed inset-0 flex flex-col justify-center items-center px-6 pointer-events-none z-20"
-        >
-          <div className="text-center flex flex-col gap-2">
-            <h2 className="text-8xl md:text-9xl lg:text-[12rem] font-bold tracking-tighter text-foreground leading-none">
-              500+
-            </h2>
-            <p className="text-lg md:text-xl font-medium tracking-wide text-muted mt-4">
-              Problems Solved
-            </p>
-            <p className="text-sm text-muted/80 max-w-sm mx-auto leading-relaxed mt-2">
-              Demonstrated consistency across LeetCode, SkillRack, and CodeChef.
-            </p>
-          </div>
-        </motion.section>
-
-        {/* ==================================================== */}
-        {/* SCREEN 3: Stat reveal - Systems built */}
-        {/* ==================================================== */}
-        <motion.section 
-          style={{ opacity: stats2Opacity, scale: stats2Scale }}
-          className="h-screen w-full fixed inset-0 flex flex-col justify-center items-center px-6 pointer-events-none z-20"
-        >
-          <div className="text-center flex flex-col gap-2">
-            <h2 className="text-8xl md:text-9xl lg:text-[12rem] font-bold tracking-tighter text-foreground leading-none">
-              3
-            </h2>
-            <p className="text-lg md:text-xl font-medium tracking-wide text-muted mt-4">
-              Systems Built
-            </p>
-            <p className="text-sm text-muted/80 max-w-sm mx-auto leading-relaxed mt-2">
-              Intelligent Interview Simulators, Error Mitigation Engines, and Resilient Networks.
-            </p>
-          </div>
-        </motion.section>
-
-        {/* ==================================================== */}
-        {/* SCREEN 4: Pillar layout */}
-        {/* ==================================================== */}
-        <motion.section 
-          style={{ opacity: pillarsOpacity, scale: pillarsScale }}
-          className="h-screen w-full fixed inset-0 flex flex-col justify-center items-center px-6 pointer-events-none z-20"
-        >
-          <div className="text-center flex flex-col gap-8 max-w-2xl">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 font-medium text-sm tracking-wide">
-              <div className="px-4 py-3 rounded-lg border border-border bg-card/60 backdrop-blur-sm text-foreground flex items-center justify-center shadow-sm">AI</div>
-              <div className="px-4 py-3 rounded-lg border border-border bg-card/60 backdrop-blur-sm text-foreground flex items-center justify-center shadow-sm">Backend</div>
-              <div className="px-4 py-3 rounded-lg border border-border bg-card/60 backdrop-blur-sm text-foreground flex items-center justify-center shadow-sm">Systems</div>
-              <div className="px-4 py-3 rounded-lg border border-border bg-card/60 backdrop-blur-sm text-foreground flex items-center justify-center shadow-sm">Infrastructure</div>
+            <div className="w-full max-w-2xl p-6 rounded-xl border border-border bg-card/50 backdrop-blur-md shadow-2xl font-mono text-sm">
+              <div className="flex items-center gap-2 mb-4 border-b border-border/50 pb-4">
+                <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                <span className="ml-2 text-muted text-xs">tvs_os bootloader v3.0</span>
+              </div>
+              <div className="flex flex-col gap-2">
+                {BOOT_SEQUENCE.slice(0, bootStep).map((line, i) => (
+                  <div key={i} className={`flex items-center gap-2 ${i === BOOT_SEQUENCE.length - 1 ? 'text-primary font-bold mt-4' : 'text-muted-foreground'}`}>
+                    <ChevronRight className="w-4 h-4" />
+                    <span>{line}</span>
+                  </div>
+                ))}
+                
+                {bootStep < BOOT_SEQUENCE.length && (
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <ChevronRight className="w-4 h-4" />
+                    <span>{BOOT_SEQUENCE[bootStep].substring(0, charIndex)}</span>
+                    <motion.div 
+                      animate={{ opacity: [1, 0] }} 
+                      transition={{ repeat: Infinity, duration: 0.8 }}
+                      className="w-2 h-4 bg-primary/80 ml-1"
+                    />
+                  </div>
+                )}
+              </div>
             </div>
-            <p className="text-base text-muted leading-relaxed">
-              Combining algorithmic engineering with advanced infrastructure deployment to produce deterministic, enterprise-grade runtime solutions.
-            </p>
-          </div>
-        </motion.section>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="main"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="w-full"
+          >
+            {/* Parallax Aurora Backgrounds */}
+            <div className="fixed top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-primary/[0.03] blur-[120px] pointer-events-none z-0 mix-blend-screen" />
+            <div className="fixed bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-blue-500/[0.02] blur-[100px] pointer-events-none z-0 mix-blend-screen" />
 
-        {/* ==================================================== */}
-        {/* SCREEN 5: Current Mission */}
-        {/* ==================================================== */}
-        <motion.section 
-          style={{ opacity: missionOpacity, scale: missionScale }}
-          className="h-screen w-full fixed inset-0 flex flex-col justify-center items-center px-6 pointer-events-none z-20"
-        >
-          <div className="text-center flex flex-col gap-6 max-w-2xl">
-            <span className="text-sm font-semibold text-muted tracking-wide">Current Mission</span>
-            <h3 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground leading-tight">
-              Building scalable AI systems and backend architectures that solve real-world problems.
-            </h3>
-          </div>
-        </motion.section>
-
-        {/* Height spacing buffer to accommodate the fixed items during scroll */}
-        <div className="h-[450vh]" />
-
-        {/* ==================================================== */}
-        {/* SYSTEM JOURNEY: Timeline */}
-        {/* ==================================================== */}
-        <section className="py-32 px-6 max-w-5xl mx-auto w-full relative z-30">
-          <div className="text-center flex flex-col items-center gap-4 mb-24">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">
-              Engineering Evolution
-            </h2>
-            <p className="text-base text-muted max-w-md leading-relaxed">
-              Tracing structural milestones and focus shifts across my software engineering journey.
-            </p>
-          </div>
-
-          <div className="relative border-l border-border/80 pl-8 ml-4 md:ml-8 flex flex-col gap-16">
-            {milestones.map((m, idx) => {
-              const Icon = m.icon
-              return (
-                <motion.div 
-                  key={m.year}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  className="relative group"
-                >
-                  {/* Timeline point indicator */}
-                  <div className="absolute -left-[45px] top-0 w-8 h-8 rounded-lg bg-card border border-border text-muted group-hover:border-foreground/30 transition-all duration-300 flex items-center justify-center z-10 shadow-sm">
-                    <Icon className="w-4 h-4" />
+            {/* Hero Section */}
+            <motion.section 
+              style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
+              className="min-h-[80vh] w-full flex items-center pt-32 px-6 max-w-7xl mx-auto relative z-10"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
+                
+                {/* Left Panel: Profile */}
+                <div className="flex flex-col gap-8">
+                  <div className="flex flex-col gap-4">
+                    <motion.div 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.2 }}
+                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-mono w-fit"
+                    >
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                      </span>
+                      System Online
+                    </motion.div>
+                    
+                    <motion.h1 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.3 }}
+                      className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-tight"
+                    >
+                      THARUN VARSHAN S
+                    </motion.h1>
+                    
+                    <motion.h2 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.4 }}
+                      className="text-xl md:text-2xl font-mono text-muted-foreground"
+                    >
+                      AI Systems Backend Engineer
+                    </motion.h2>
+                    
+                    <motion.p 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.5 }}
+                      className="text-base text-muted leading-relaxed max-w-md"
+                    >
+                      Building scalable AI systems, backend architectures, intelligent platforms, and production-ready applications.
+                    </motion.p>
                   </div>
 
-                  {/* Journey details Card */}
-                  <div className="p-8 rounded-2xl border border-border/80 bg-card/40 backdrop-blur-sm group-hover:border-foreground/20 group-hover:shadow-md transition-all duration-300 relative overflow-hidden flex flex-col md:flex-row gap-6 justify-between items-start md:items-center">
-                    
-                    <div className="relative z-10 flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <span className="text-sm font-bold text-foreground">{m.year}</span>
-                        <span className="text-sm text-muted">·</span>
-                        <h4 className="text-lg font-bold text-foreground transition-colors">{m.phase}</h4>
-                      </div>
-                      <p className="text-sm text-muted leading-relaxed max-w-xl">{m.desc}</p>
-                    </div>
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
+                    className="flex flex-wrap items-center gap-4 mt-2"
+                  >
+                    <Link 
+                      href="/projects" 
+                      className="group px-6 py-3 rounded-lg bg-foreground text-background font-medium hover:bg-foreground/90 transition-all flex items-center gap-2"
+                    >
+                      Explore Projects
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                    <Link 
+                      href="/resume" 
+                      className="px-6 py-3 rounded-lg border border-border bg-card/50 hover:bg-card hover:border-foreground/20 text-foreground font-medium transition-all flex items-center gap-2 backdrop-blur-sm"
+                    >
+                      <FileText className="w-4 h-4" />
+                      View Resume
+                    </Link>
+                    <a 
+                      href="/Tharun_Varshan_S_Resume.pdf" 
+                      target="_blank"
+                      className="p-3 rounded-lg border border-border bg-card/50 hover:bg-card hover:border-foreground/20 text-muted hover:text-foreground transition-all backdrop-blur-sm"
+                      title="Download Resume"
+                    >
+                      <Download className="w-4 h-4" />
+                    </a>
+                  </motion.div>
+                </div>
 
-                    <div className="relative z-10 flex items-center gap-2 text-xs font-medium text-muted">
-                      <span>Completed</span>
-                      <div className="w-1.5 h-1.5 rounded-full bg-success" />
+                {/* Right Panel: Dynamic Console */}
+                <motion.div 
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 1, delay: 0.8 }}
+                  className="w-full relative"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent blur-3xl rounded-3xl" />
+                  <div className="relative w-full rounded-2xl border border-border/80 bg-card/30 backdrop-blur-xl shadow-2xl overflow-hidden flex flex-col">
+                    {/* Console Header */}
+                    <div className="flex items-center justify-between px-4 py-3 border-b border-border/50 bg-card/50">
+                      <div className="flex items-center gap-2">
+                        <Terminal className="w-4 h-4 text-muted" />
+                        <span className="text-xs font-mono text-muted">system_status.sh</span>
+                      </div>
+                      <div className="flex gap-1.5">
+                        <div className="w-2.5 h-2.5 rounded-full bg-border" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-border" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-border" />
+                      </div>
+                    </div>
+                    {/* Console Body */}
+                    <div className="p-8 h-[280px] font-mono text-sm flex flex-col justify-center bg-background/40">
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={consoleIndex}
+                          initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
+                          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                          exit={{ opacity: 0, y: -10, filter: "blur(4px)" }}
+                          transition={{ duration: 0.4 }}
+                          className="text-primary font-medium text-xl"
+                        >
+                          {CONSOLE_ITEMS[consoleIndex]}
+                        </motion.div>
+                      </AnimatePresence>
+                      <div className="mt-6 flex items-center gap-2 text-muted">
+                        <span className="animate-pulse">_</span>
+                        <span className="text-xs opacity-50">Awaiting runtime instructions...</span>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
-              )
-            })}
-          </div>
 
-          <div className="mt-20 flex justify-center">
-            <Link 
-              href="/projects" 
-              className="group px-6 py-3 rounded-xl bg-foreground text-background hover:scale-[1.02] active:scale-[0.98] text-sm font-semibold tracking-wide transition-all duration-300 flex items-center gap-2 shadow-sm"
-            >
-              Explore Active Systems
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-        </section>
+              </div>
+            </motion.section>
 
-        {/* ==================================================== */}
-        {/* LOG STREAM: Real time logs */}
-        {/* ==================================================== */}
-        <section className="py-24 px-6 max-w-7xl mx-auto w-full relative z-30">
-          <ActivityStreamSection />
-        </section>
-      </div>
+            {/* Scroll spacing */}
+            <div className="h-[20vh]" />
+
+            {/* Activity Stream Section */}
+            <section className="py-24 px-6 max-w-7xl mx-auto w-full relative z-30">
+              <ActivityStreamSection />
+            </section>
+            
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
