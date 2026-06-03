@@ -170,7 +170,7 @@ export default function ResumePage() {
             <div className="flex flex-col gap-2">
               <div className="flex justify-between items-start">
                 <h3 className="font-bold text-foreground text-base print:text-black">
-                  LifeBridge – Organ Donation Management System
+                  Organ Donation Management System
                 </h3>
               </div>
               <span className="text-xs font-semibold text-primary mb-1 print:text-blue-700">React 18, Vite, Tailwind CSS, React Router</span>

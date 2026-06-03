@@ -48,7 +48,7 @@ export default function Home() {
     }
 
     const currentLine = BOOT_SEQUENCE[bootStep]
-    
+
     if (charIndex < currentLine.length) {
       const timeout = setTimeout(() => {
         setCharIndex(prev => prev + 1)
@@ -84,10 +84,10 @@ export default function Home() {
 
   return (
     <div ref={containerRef} className="relative w-full min-h-screen bg-background select-none overflow-x-hidden">
-      
+
       <AnimatePresence mode="wait">
         {isBooting ? (
-          <motion.div 
+          <motion.div
             key="boot"
             exit={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -107,13 +107,13 @@ export default function Home() {
                     <span>{line}</span>
                   </div>
                 ))}
-                
+
                 {bootStep < BOOT_SEQUENCE.length && (
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <ChevronRight className="w-4 h-4" />
                     <span>{BOOT_SEQUENCE[bootStep].substring(0, charIndex)}</span>
-                    <motion.div 
-                      animate={{ opacity: [1, 0] }} 
+                    <motion.div
+                      animate={{ opacity: [1, 0] }}
                       transition={{ repeat: Infinity, duration: 0.8 }}
                       className="w-2 h-4 bg-primary/80 ml-1"
                     />
@@ -135,16 +135,16 @@ export default function Home() {
             <div className="fixed bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-blue-500/[0.02] blur-[100px] pointer-events-none z-0 mix-blend-screen" />
 
             {/* Hero Section */}
-            <motion.section 
+            <motion.section
               style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
               className="min-h-[80vh] w-full flex items-center pt-32 px-6 max-w-7xl mx-auto relative z-10"
             >
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
-                
+
                 {/* Left Panel: Profile */}
                 <div className="flex flex-col gap-8">
                   <div className="flex flex-col gap-4">
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8, delay: 0.2 }}
@@ -156,8 +156,8 @@ export default function Home() {
                       </span>
                       System Online
                     </motion.div>
-                    
-                    <motion.h1 
+
+                    <motion.h1
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8, delay: 0.3 }}
@@ -165,8 +165,8 @@ export default function Home() {
                     >
                       THARUN VARSHAN S
                     </motion.h1>
-                    
-                    <motion.h2 
+
+                    <motion.h2
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8, delay: 0.4 }}
@@ -174,8 +174,8 @@ export default function Home() {
                     >
                       AI Systems Backend Engineer
                     </motion.h2>
-                    
-                    <motion.p 
+
+                    <motion.p
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8, delay: 0.5 }}
@@ -185,28 +185,28 @@ export default function Home() {
                     </motion.p>
                   </div>
 
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
                     className="flex flex-wrap items-center gap-4 mt-2"
                   >
-                    <Link 
-                      href="/projects" 
+                    <Link
+                      href="/projects"
                       className="group px-6 py-3 rounded-lg bg-foreground text-background font-medium hover:bg-foreground/90 transition-all flex items-center gap-2"
                     >
                       Explore Projects
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
-                    <Link 
-                      href="/resume" 
+                    <Link
+                      href="/resume"
                       className="px-6 py-3 rounded-lg border border-border bg-card/50 hover:bg-card hover:border-foreground/20 text-foreground font-medium transition-all flex items-center gap-2 backdrop-blur-sm"
                     >
                       <FileText className="w-4 h-4" />
                       View Resume
                     </Link>
-                    <a 
-                      href="/Tharun_Varshan_S_Resume.pdf" 
+                    <a
+                      href="/Tharun_Varshan_S_Resume.pdf"
                       target="_blank"
                       className="p-3 rounded-lg border border-border bg-card/50 hover:bg-card hover:border-foreground/20 text-muted hover:text-foreground transition-all backdrop-blur-sm"
                       title="Download Resume"
@@ -217,7 +217,7 @@ export default function Home() {
                 </div>
 
                 {/* Right Panel: Dynamic Console */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 1, delay: 0.8 }}
@@ -263,13 +263,96 @@ export default function Home() {
             </motion.section>
 
             {/* Scroll spacing */}
-            <div className="h-[20vh]" />
+            <div className="h-[10vh]" />
+
+            {/* Education & Achievements */}
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="px-6 max-w-7xl mx-auto w-full relative z-30 mb-24 grid grid-cols-1 md:grid-cols-2 gap-8"
+            >
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  <h3 className="text-sm font-mono text-muted uppercase tracking-wider">Education Summary</h3>
+                </div>
+                
+                <div className="flex flex-col gap-3 group">
+                  <div className="p-4 rounded-xl border border-border bg-card/30 backdrop-blur-sm hover:-translate-y-0.5 hover:border-primary/50 transition-all duration-300 relative overflow-hidden group/card shadow-sm hover:shadow-primary/5">
+                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover/card:animate-[shimmer_2s_infinite]" />
+                     <div className="flex justify-between items-start mb-1">
+                       <h4 className="font-semibold text-foreground">Sri Eshwar College of Engineering</h4>
+                       <span className="text-xs font-mono text-muted">2024 – 2028</span>
+                     </div>
+                     <p className="text-sm text-muted-foreground mb-2">B.Tech in Artificial Intelligence and Data Science</p>
+                     <div className="text-xs font-mono text-primary">CGPA: 8.35</div>
+                  </div>
+                  
+                  <div className="p-4 rounded-xl border border-border bg-card/30 backdrop-blur-sm hover:-translate-y-0.5 hover:border-primary/50 transition-all duration-300 relative overflow-hidden shadow-sm hover:shadow-primary/5">
+                     <div className="flex justify-between items-start mb-1">
+                       <h4 className="font-semibold text-foreground">Peepal Prodigy School</h4>
+                       <span className="text-xs font-mono text-muted">2022 – 2024</span>
+                     </div>
+                     <p className="text-sm text-muted-foreground">Higher Secondary Certificate (HSC)</p>
+                  </div>
+                  
+                  <div className="p-4 rounded-xl border border-border bg-card/30 backdrop-blur-sm hover:-translate-y-0.5 hover:border-primary/50 transition-all duration-300 relative overflow-hidden shadow-sm hover:shadow-primary/5">
+                     <div className="flex justify-between items-start mb-1">
+                       <h4 className="font-semibold text-foreground">Peepal Prodigy School</h4>
+                       <span className="text-xs font-mono text-muted">2021 – 2022</span>
+                     </div>
+                     <p className="text-sm text-muted-foreground">Secondary School Leaving Certificate (SSLC)</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  <h3 className="text-sm font-mono text-muted uppercase tracking-wider">Achievements Snapshot</h3>
+                </div>
+                
+                <div className="grid grid-cols-1 gap-3">
+                  <div className="p-5 rounded-xl border border-border bg-card/30 backdrop-blur-sm hover:-translate-y-0.5 hover:border-primary/50 transition-all duration-300 flex items-center gap-4 shadow-sm hover:shadow-primary/5 group/card">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20 text-primary transition-transform group-hover/card:scale-110">
+                      🏆
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-foreground">Winner - CoderAct</h4>
+                      <p className="text-xs text-muted-foreground">High-fidelity distributed preprocessor prototype</p>
+                    </div>
+                  </div>
+                  
+                  <div className="p-5 rounded-xl border border-border bg-card/30 backdrop-blur-sm hover:-translate-y-0.5 hover:border-primary/50 transition-all duration-300 flex items-center gap-4 shadow-sm hover:shadow-primary/5 group/card">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20 text-primary transition-transform group-hover/card:scale-110">
+                      ⭐
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-foreground">SELFE Finalist</h4>
+                      <p className="text-xs text-muted-foreground">Real-world matching geodatabase nodes</p>
+                    </div>
+                  </div>
+                  
+                  <div className="p-5 rounded-xl border border-border bg-card/30 backdrop-blur-sm hover:-translate-y-0.5 hover:border-primary/50 transition-all duration-300 flex items-center gap-4 shadow-sm hover:shadow-primary/5 group/card">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20 text-primary transition-transform group-hover/card:scale-110">
+                      🤝
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-foreground">Best Team Spirit Award</h4>
+                      <p className="text-xs text-muted-foreground">ACM-ICPC Regional contests</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.section>
 
             {/* Activity Stream Section */}
             <section className="py-24 px-6 max-w-7xl mx-auto w-full relative z-30">
               <ActivityStreamSection />
             </section>
-            
+
           </motion.div>
         )}
       </AnimatePresence>

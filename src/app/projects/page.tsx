@@ -38,7 +38,7 @@ export default function SystemsHub() {
     },
     {
       id: "lifebridge",
-      title: "LifeBridge Network",
+      title: "Organ Donation System",
       domain: "lifebridge.platform",
       icon: Network,
       color: "from-border to-transparent",
@@ -65,12 +65,12 @@ export default function SystemsHub() {
 
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
   }
 
   return (
     <div className="min-h-screen py-32 px-6 max-w-7xl mx-auto w-full flex flex-col gap-16 relative z-10">
-      
+
       {/* Page Header */}
       <div className="flex flex-col gap-6 max-w-3xl">
         <h1 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight leading-none">
@@ -85,7 +85,7 @@ export default function SystemsHub() {
       </div>
 
       {/* Systems Grid */}
-      <motion.div 
+      <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="show"
@@ -123,7 +123,7 @@ export default function SystemsHub() {
                   <p className="text-base text-muted leading-relaxed max-w-2xl">
                     {sys.desc}
                   </p>
-                  
+
                   {/* Skill Badges */}
                   <div className="flex flex-wrap gap-2.5 text-xs font-medium text-muted">
                     {sys.tags.map(t => (
@@ -134,7 +134,7 @@ export default function SystemsHub() {
 
                 {/* Explore Trigger Link */}
                 <div className="mt-12 flex">
-                  <Link 
+                  <Link
                     href={`/projects/${sys.id}`}
                     className="px-5 py-3 rounded-lg bg-foreground text-background hover:scale-[1.02] active:scale-[0.98] text-sm font-semibold transition-all duration-300 flex items-center gap-2 group/link shadow-sm"
                   >

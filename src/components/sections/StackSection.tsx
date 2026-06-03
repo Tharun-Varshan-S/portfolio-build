@@ -66,7 +66,7 @@ export function StackSection() {
 
             <div className="flex flex-wrap gap-x-6 gap-y-3 flex-1 font-mono text-xs text-muted">
               {layer.tags.map(tag => (
-                <span key={tag} className="hover:text-white transition-colors">{tag}</span>
+                <span key={tag} className="px-2 py-1 rounded bg-transparent border border-transparent hover:border-primary/20 hover:bg-primary/5 hover:text-white transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_0_8px_rgba(0,229,255,0.2)]">{tag}</span>
               ))}
             </div>
           </div>

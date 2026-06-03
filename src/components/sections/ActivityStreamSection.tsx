@@ -40,7 +40,7 @@ export function ActivityStreamSection() {
         <div className="p-6 font-mono text-xs text-muted overflow-x-auto leading-relaxed">
           <div className="mb-4 text-gray-500">
             <p>[boot] starting service: error.mitigation.engine ....... ok</p>
-            <p>[boot] starting service: lifebridge.platform ........... ok</p>
+            <p>[boot] starting service: organdonation.system .......... ok</p>
             <p>[boot] verifying credentials .......... 4/4 valid</p>
             <p>[boot] establishing uplink: github / linkedin / email ... ok</p>
             <p className="text-white">[boot] SYSTEM READY : welcome, recruiter.</p>

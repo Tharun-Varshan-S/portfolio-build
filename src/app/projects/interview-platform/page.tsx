@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowLeft, ExternalLink, Code2, Cpu, Database, CheckCircle, Terminal, HelpCircle, AlertTriangle } from "lucide-react"
+import { ProjectArchitecture } from "@/components/sections/ProjectArchitecture"
 
 export default function InterviewPlatformDetail() {
   const techStack = [
@@ -74,10 +75,7 @@ export default function InterviewPlatformDetail() {
 
         {/* CTA Actions */}
         <div className="flex flex-wrap gap-4 mt-4 font-mono text-xs">
-          <a href="#" className="flex items-center gap-2 px-5 py-3 rounded-lg bg-primary/10 border border-primary/20 hover:bg-primary/25 hover:border-primary/50 text-primary transition-all duration-300">
-            <ExternalLink className="w-4 h-4" /> LAUNCH LIVE PLATFORM
-          </a>
-          <a href="https://github.com/Tharun-Varshan-S" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white transition-all duration-300">
+          <a href="https://github.com/Tharun-Varshan-S/AI-nterview-assistant.git" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white transition-all duration-300">
             <Code2 className="w-4 h-4" /> BROWSE REPOSITORY
           </a>
         </div>
@@ -109,38 +107,8 @@ export default function InterviewPlatformDetail() {
         </div>
       </div>
 
-      {/* System Overview */}
-      <div className="flex flex-col gap-6 p-8 rounded-2xl border border-border/85 bg-card/30 backdrop-blur-sm relative overflow-hidden">
-        <div className="absolute top-0 right-0 p-8 text-primary/5 pointer-events-none">
-          <Terminal className="w-48 h-48" />
-        </div>
-
-        <h3 className="text-xl font-bold text-white uppercase tracking-tight">System Overview & Architecture Flow</h3>
-        <p className="text-sm text-muted leading-relaxed max-w-3xl">
-          The pipeline acts as a synchronous parser. A candidate uploads their resume, which is routed to the node parse middleware. Text extraction isolates core milestones, which are compiled into a dynamic matrix. The Gemini API maps these blocks against specialized technical domains to generate multi-dimensional questions.
-        </p>
-
-        {/* Textual flow stream representation */}
-        <div className="mt-6 flex flex-col gap-3 font-mono text-[10px] text-muted tracking-wider uppercase">
-          <div className="flex items-center gap-3">
-            <span className="text-primary">[RESUME PDF]</span>
-            <span>&rarr;</span>
-            <span>NODE CONVERTER</span>
-            <span>&rarr;</span>
-            <span className="text-primary">[RAW MATRIX]</span>
-            <span>&rarr;</span>
-            <span>GEMINI PARSER</span>
-          </div>
-          <div className="flex items-center gap-3 ml-12">
-            <span>&rarr;</span>
-            <span className="text-success">[STRUCTURED JSON OUT]</span>
-            <span>&rarr;</span>
-            <span>EXPRESS REST API</span>
-            <span>&rarr;</span>
-            <span className="text-success">[VERIFIED CLIENT DATA]</span>
-          </div>
-        </div>
-      </div>
+      {/* Interactive System Architecture */}
+      <ProjectArchitecture projectId="interview-platform" />
 
       {/* Technical Decisions Table */}
       <div className="flex flex-col gap-8">

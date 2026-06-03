@@ -19,8 +19,7 @@ export function ServicesSection() {
         { label: "Auth", value: "JWT" },
         { label: "Model", value: "Gemini" }
       ],
-      liveUrl: "#",
-      repoUrl: "#"
+      repoUrl: "https://github.com/Tharun-Varshan-S/AI-nterview-assistant.git"
     },
     {
       title: "Intelligent Error Mitigation System",
@@ -37,11 +36,10 @@ export function ServicesSection() {
         { label: "Accuracy", value: "98.2%" },
         { label: "Retraining", value: "Auto" }
       ],
-      liveUrl: "#",
-      repoUrl: "#"
+      repoUrl: "https://github.com/Tharun-Varshan-S/DATA-SCIENCE-PROJECT-COLLEGE.git"
     },
     {
-      title: "LifeBridge",
+      title: "Organ Donation System",
       domain: "lifebridge.platform",
       desc: "Role-based organ donation management platform connecting donors, hospitals, and administrators.",
       tags: ["React 18", "Vite", "Tailwind CSS", "React Router"],
@@ -55,8 +53,7 @@ export function ServicesSection() {
         { label: "Roles", value: "3" },
         { label: "Access", value: "RBAC" }
       ],
-      liveUrl: "#",
-      repoUrl: "#"
+      repoUrl: "https://github.com/Tharun-Varshan-S/organ-donation-system.git"
     }
   ]
 
@@ -85,9 +82,6 @@ export function ServicesSection() {
               </div>
 
               <div className="flex flex-wrap gap-3">
-                <a href={project.liveUrl} className="flex items-center gap-2 px-4 py-1.5 border border-primary/30 rounded text-xs font-mono text-white hover:bg-primary/10 transition-colors">
-                  <ExternalLink className="w-3.5 h-3.5" /> LIVE
-                </a>
                 <a href={project.repoUrl} className="flex items-center gap-2 px-4 py-1.5 border border-border rounded text-xs font-mono text-white hover:bg-white/5 transition-colors">
                   <Code2 className="w-3.5 h-3.5" /> REPO
                 </a>

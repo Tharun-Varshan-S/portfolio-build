@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowLeft, ExternalLink, Code2, ShieldAlert, Cpu, Database, CheckCircle, Terminal, HelpCircle, AlertTriangle } from "lucide-react"
+import { ProjectArchitecture } from "@/components/sections/ProjectArchitecture"
 
 export default function ErrorMitigationDetail() {
   const techStack = [
@@ -73,10 +74,7 @@ export default function ErrorMitigationDetail() {
 
         {/* CTA Actions */}
         <div className="flex flex-wrap gap-4 mt-4 font-mono text-xs">
-          <a href="#" className="flex items-center gap-2 px-5 py-3 rounded-lg bg-primary/10 border border-primary/20 hover:bg-primary/25 hover:border-primary/50 text-primary transition-all duration-300">
-            <ExternalLink className="w-4 h-4" /> INITIATE TESTING FRAME
-          </a>
-          <a href="https://github.com/Tharun-Varshan-S" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white transition-all duration-300">
+          <a href="https://github.com/Tharun-Varshan-S/DATA-SCIENCE-PROJECT-COLLEGE.git" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white transition-all duration-300">
             <Code2 className="w-4 h-4" /> BROWSE REPOSITORY
           </a>
         </div>
@@ -108,36 +106,8 @@ export default function ErrorMitigationDetail() {
         </div>
       </div>
 
-      {/* System Overview */}
-      <div className="flex flex-col gap-6 p-8 rounded-2xl border border-border/85 bg-card/30 backdrop-blur-sm relative overflow-hidden">
-        <div className="absolute top-0 right-0 p-8 text-primary/5 pointer-events-none">
-          <Terminal className="w-48 h-48" />
-        </div>
-
-        <h3 className="text-xl font-bold text-white uppercase tracking-tight">System Overview & Architecture Flow</h3>
-        <p className="text-sm text-muted leading-relaxed max-w-3xl">
-          The processing pipeline integrates a series of serial pre-processing steps. Raw stream payloads are first verified for structural schema consistency. Sub-modules perform outlier analysis using Isolation Forests before feeding values to Bayesian Ridge regression for missing value imputation.
-        </p>
-
-        {/* Textual flow stream representation */}
-        <div className="mt-6 flex flex-col gap-3 font-mono text-[10px] text-muted tracking-wider uppercase">
-          <div className="flex items-center gap-3">
-            <span className="text-primary">[RAW TRANSACTIONS]</span>
-            <span>&rarr;</span>
-            <span>OUTLIER DETECTOR (ISOLATION FOREST)</span>
-            <span>&rarr;</span>
-            <span className="text-primary">[CLEAN TARGETS]</span>
-          </div>
-          <div className="flex items-center gap-3 ml-12">
-            <span>&rarr;</span>
-            <span>BAYESIAN IMPUTER (NULL CORRECTION)</span>
-            <span>&rarr;</span>
-            <span className="text-success">[COMPLETED FEATURES]</span>
-            <span>&rarr;</span>
-            <span>STORAGE LAYER</span>
-          </div>
-        </div>
-      </div>
+      {/* Interactive System Architecture */}
+      <ProjectArchitecture projectId="error-mitigation" />
 
       {/* Technical Decisions Table */}
       <div className="flex flex-col gap-8">

@@ -3,8 +3,9 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowLeft, ExternalLink, Code2, Network, Cpu, Database, CheckCircle, Terminal, HelpCircle, AlertTriangle } from "lucide-react"
+import { ProjectArchitecture } from "@/components/sections/ProjectArchitecture"
 
-export default function LifeBridgeDetail() {
+export default function OrganDonationDetail() {
   const techStack = [
     { name: "React 18", category: "Client View Engine" },
     { name: "Vite", category: "Fast Client Bundler" },
@@ -60,12 +61,12 @@ export default function LifeBridgeDetail() {
       <div className="flex flex-col gap-6">
         <div className="flex items-center gap-2 text-xs font-mono text-primary tracking-widest uppercase">
           <Network className="w-4 h-4 text-emerald-400" />
-          SYSTEM CODE: LIFEBRIDGE.NETWORK
+          SYSTEM CODE: ORGANDONATION.SYSTEM
         </div>
         <h1 className="text-4xl md:text-6xl font-black text-white leading-tight uppercase tracking-tight">
-          LifeBridge <br />
+          Organ Donation <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">
-            Network
+            System
           </span>
         </h1>
         <p className="text-base text-muted leading-relaxed max-w-3xl">
@@ -74,10 +75,7 @@ export default function LifeBridgeDetail() {
 
         {/* CTA Actions */}
         <div className="flex flex-wrap gap-4 mt-4 font-mono text-xs">
-          <a href="#" className="flex items-center gap-2 px-5 py-3 rounded-lg bg-primary/10 border border-primary/20 hover:bg-primary/25 hover:border-primary/50 text-primary transition-all duration-300">
-            <ExternalLink className="w-4 h-4" /> LAUNCH CONSOLE
-          </a>
-          <a href="https://github.com/Tharun-Varshan-S" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white transition-all duration-300">
+          <a href="https://github.com/Tharun-Varshan-S/organ-donation-system.git" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white transition-all duration-300">
             <Code2 className="w-4 h-4" /> BROWSE REPOSITORY
           </a>
         </div>
@@ -104,41 +102,13 @@ export default function LifeBridgeDetail() {
             02. WHY IT EXISTS
           </h3>
           <p className="text-sm text-muted leading-relaxed">
-            LifeBridge was engineered to provide instant, secure matching capabilities. By combining role-based authentication layers with localized geocoding APIs, matching is solved automatically under strict HIPAA compliance rules.
+            Organ Donation System was engineered to provide instant, secure matching capabilities. By combining role-based authentication layers with localized geocoding APIs, matching is solved automatically under strict HIPAA compliance rules.
           </p>
         </div>
       </div>
 
-      {/* System Overview */}
-      <div className="flex flex-col gap-6 p-8 rounded-2xl border border-border/85 bg-card/30 backdrop-blur-sm relative overflow-hidden">
-        <div className="absolute top-0 right-0 p-8 text-primary/5 pointer-events-none">
-          <Terminal className="w-48 h-48" />
-        </div>
-
-        <h3 className="text-xl font-bold text-white uppercase tracking-tight">System Overview & Architecture Flow</h3>
-        <p className="text-sm text-muted leading-relaxed max-w-3xl">
-          The application layers utilize strict role segmentation. Registered Donors upload vital medical data flags, while Hospitals coordinate emergency matches. The database tracks match priorities through distance optimization algorithms, updating administrators instantly.
-        </p>
-
-        {/* Textual flow stream representation */}
-        <div className="mt-6 flex flex-col gap-3 font-mono text-[10px] text-muted tracking-wider uppercase">
-          <div className="flex items-center gap-3">
-            <span className="text-primary">[DONOR ACTIONS]</span>
-            <span>&rarr;</span>
-            <span>RBAC VALIDATOR</span>
-            <span>&rarr;</span>
-            <span>GEODATABASE (POSTGRESQL)</span>
-          </div>
-          <div className="flex items-center gap-3 ml-12">
-            <span>&rarr;</span>
-            <span>DISTANCE OPTIMIZATION</span>
-            <span>&rarr;</span>
-            <span className="text-success">[NEAREST MATCHING NODES]</span>
-            <span>&rarr;</span>
-            <span>HOSPITAL DISPATCH LOG</span>
-          </div>
-        </div>
-      </div>
+      {/* Interactive System Architecture */}
+      <ProjectArchitecture projectId="lifebridge" />
 
       {/* Technical Decisions Table */}
       <div className="flex flex-col gap-8">

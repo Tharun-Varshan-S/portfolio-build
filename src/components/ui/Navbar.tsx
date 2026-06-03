@@ -68,9 +68,10 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`relative px-4 py-2 font-mono text-[10px] tracking-widest transition-all duration-300 uppercase rounded-full ${isActive ? "text-white font-medium" : "text-muted hover:text-white"
+                className={`relative px-4 py-2 font-mono text-[10px] tracking-widest transition-all duration-300 uppercase rounded-full group/navlink overflow-hidden ${isActive ? "text-white font-medium" : "text-muted hover:text-white"
                   }`}
               >
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover/navlink:animate-[shimmer_1.5s_infinite]" />
                 {isActive && (
                   <motion.div
                     layoutId="active-nav"
@@ -78,7 +79,7 @@ export function Navbar() {
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
-                {link.name}
+                <span className="relative z-10">{link.name}</span>
               </Link>
             )
           })}
@@ -88,10 +89,11 @@ export function Navbar() {
         <div className="hidden lg:flex items-center">
           <Link
             href="/contact"
-            className="group px-4 py-2 rounded-lg bg-primary/10 border border-primary/20 text-primary text-xs font-mono uppercase hover:bg-primary/25 hover:border-primary/50 transition-all duration-300 flex items-center gap-1.5"
+            className="group px-4 py-2 rounded-lg bg-primary/10 border border-primary/20 text-primary text-xs font-mono uppercase hover:bg-primary/25 hover:border-primary/50 active:scale-[0.98] transition-all duration-300 flex items-center gap-1.5 relative overflow-hidden"
           >
-            Initiate Contact
-            <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+            <span className="relative z-10">Initiate Contact</span>
+            <ArrowUpRight className="w-3.5 h-3.5 relative z-10 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
           </Link>
         </div>
 

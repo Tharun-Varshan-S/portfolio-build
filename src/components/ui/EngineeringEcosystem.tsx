@@ -12,8 +12,6 @@ import {
   SiNginx, SiKubernetes, SiLeetcode, SiCodechef,
 } from 'react-icons/si';
 import { FaAws } from 'react-icons/fa';
-
-// Icon Registry
 const ICONS: Record<string, React.ComponentType<{ size?: number; className?: string; style?: React.CSSProperties; color?: string }>> = {
   React: SiReact, 'Next.js': SiNextdotjs, TypeScript: SiTypescript,
   JavaScript: SiJavascript, HTML5: SiHtml5, Tailwind: SiTailwindcss,
@@ -61,23 +59,23 @@ interface TechNode {
 const ECOSYSTEM_BASE: TechNode[] = [
   // TOP
   { name: 'TypeScript', x: 35, y: 12, driftX: 15, driftY: 20, driftDur: 45, size: 'sm', layer: 3, opacityMult: 1, scrollRatio: 0.1 },
-  { name: 'Next.js',    x: 65, y: 15, driftX: 20, driftY: 15, driftDur: 35, size: 'lg', layer: 2, opacityMult: 1, scrollRatio: 0.3 },
+  { name: 'Next.js', x: 65, y: 15, driftX: 20, driftY: 15, driftDur: 35, size: 'lg', layer: 2, opacityMult: 1, scrollRatio: 0.3 },
   // LEFT
-  { name: 'React',      x: 12, y: 25, driftX: 25, driftY: 20, driftDur: 40, size: 'lg', layer: 2, opacityMult: 1, scrollRatio: 0.25 },
-  { name: 'Node.js',    x: 8,  y: 45, driftX: 20, driftY: 25, driftDur: 50, size: 'md', layer: 3, opacityMult: 1, scrollRatio: 0.15 },
-  { name: 'Git',        x: 15, y: 65, driftX: 15, driftY: 20, driftDur: 55, size: 'sm', layer: 3, opacityMult: 1, scrollRatio: 0.1 },
-  { name: 'Python',     x: 10, y: 80, driftX: 20, driftY: 15, driftDur: 42, size: 'lg', layer: 2, opacityMult: 1, scrollRatio: 0.3 },
-  { name: 'Docker',     x: 22, y: 88, driftX: 25, driftY: 25, driftDur: 48, size: 'md', layer: 2, opacityMult: 1, scrollRatio: 0.35 },
+  { name: 'React', x: 12, y: 25, driftX: 25, driftY: 20, driftDur: 40, size: 'lg', layer: 2, opacityMult: 1, scrollRatio: 0.25 },
+  { name: 'Node.js', x: 8, y: 45, driftX: 20, driftY: 25, driftDur: 50, size: 'md', layer: 3, opacityMult: 1, scrollRatio: 0.15 },
+  { name: 'Git', x: 15, y: 65, driftX: 15, driftY: 20, driftDur: 55, size: 'sm', layer: 3, opacityMult: 1, scrollRatio: 0.1 },
+  { name: 'Python', x: 10, y: 80, driftX: 20, driftY: 15, driftDur: 42, size: 'lg', layer: 2, opacityMult: 1, scrollRatio: 0.3 },
+  { name: 'Docker', x: 22, y: 88, driftX: 25, driftY: 25, driftDur: 48, size: 'md', layer: 2, opacityMult: 1, scrollRatio: 0.35 },
   // RIGHT
-  { name: 'AWS',        x: 85, y: 22, driftX: 20, driftY: 25, driftDur: 52, size: 'lg', layer: 2, opacityMult: 1, scrollRatio: 0.28 },
-  { name: 'MongoDB',    x: 92, y: 38, driftX: 15, driftY: 20, driftDur: 45, size: 'sm', layer: 3, opacityMult: 1, scrollRatio: 0.12 },
+  { name: 'AWS', x: 85, y: 22, driftX: 20, driftY: 25, driftDur: 52, size: 'lg', layer: 2, opacityMult: 1, scrollRatio: 0.28 },
+  { name: 'MongoDB', x: 92, y: 38, driftX: 15, driftY: 20, driftDur: 45, size: 'sm', layer: 3, opacityMult: 1, scrollRatio: 0.12 },
   { name: 'PostgreSQL', x: 88, y: 55, driftX: 25, driftY: 15, driftDur: 38, size: 'lg', layer: 2, opacityMult: 1, scrollRatio: 0.22 },
-  { name: 'FastAPI',    x: 82, y: 72, driftX: 20, driftY: 25, driftDur: 47, size: 'md', layer: 3, opacityMult: 1, scrollRatio: 0.18 },
-  { name: 'Gemini',     x: 90, y: 85, driftX: 15, driftY: 20, driftDur: 55, size: 'sm', layer: 3, opacityMult: 1, scrollRatio: 0.14 },
-  { name: 'Redis',      x: 75, y: 40, driftX: 25, driftY: 15, driftDur: 60, size: 'sm', layer: 3, opacityMult: 1, scrollRatio: 0.16 },
+  { name: 'FastAPI', x: 82, y: 72, driftX: 20, driftY: 25, driftDur: 47, size: 'md', layer: 3, opacityMult: 1, scrollRatio: 0.18 },
+  { name: 'Gemini', x: 90, y: 85, driftX: 15, driftY: 20, driftDur: 55, size: 'sm', layer: 3, opacityMult: 1, scrollRatio: 0.14 },
+  { name: 'Redis', x: 75, y: 40, driftX: 25, driftY: 15, driftDur: 60, size: 'sm', layer: 3, opacityMult: 1, scrollRatio: 0.16 },
   // BOTTOM
-  { name: 'GitHub',     x: 40, y: 92, driftX: 20, driftY: 15, driftDur: 50, size: 'md', layer: 3, opacityMult: 1, scrollRatio: 0.2 },
-  { name: 'Postman',    x: 60, y: 88, driftX: 15, driftY: 25, driftDur: 40, size: 'sm', layer: 3, opacityMult: 1, scrollRatio: 0.15 },
+  { name: 'GitHub', x: 40, y: 92, driftX: 20, driftY: 15, driftDur: 50, size: 'md', layer: 3, opacityMult: 1, scrollRatio: 0.2 },
+  { name: 'Postman', x: 60, y: 88, driftX: 15, driftY: 25, driftDur: 40, size: 'sm', layer: 3, opacityMult: 1, scrollRatio: 0.15 },
 ];
 
 const CONNECTIONS = [
@@ -117,12 +115,12 @@ function EcosystemPod({
 
   const isFocused = pageConfig.focus.includes(node.name);
   const opacityFocusMult = pageConfig.focus.length === 0 ? 1 : (isFocused ? 1.5 : 0.4);
-  
+
   // Base opacities - near (layer 2) is clearer, far (layer 3) is more faded
   const baseOp = node.layer === 2 ? 0.8 : 0.5;
-  
+
   const finalOpacity = Math.min(1, Math.max(0, baseOp * node.opacityMult * pageConfig.visibilityMult * opacityFocusMult));
-  
+
   // The color of the glow
   const color = COLORS[node.name] || '#ffffff';
 
@@ -139,9 +137,9 @@ function EcosystemPod({
         zIndex: node.layer === 2 ? 20 : 10,
       }}
       initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ 
-        opacity: finalOpacity, 
-        scale: convergeScale 
+      animate={{
+        opacity: finalOpacity,
+        scale: convergeScale
       }}
       transition={{ duration: 1.5, ease: 'easeOut' }}
     >
@@ -159,46 +157,26 @@ function EcosystemPod({
         className="relative flex items-center justify-center w-full h-full group"
       >
         {/* Glass Pedestal Base */}
-        <div className="absolute inset-0 rounded-full border border-white/10 bg-[#0c0c0c]/80 shadow-[0_8px_32px_rgba(0,0,0,0.5)] transition-all duration-500 overflow-hidden">
-           {/* Soft glow gradient inside the pedestal */}
-           <div 
-             className="absolute inset-0 opacity-20 bg-gradient-to-t from-transparent to-white/20"
-           />
+        <div className="absolute inset-0 rounded-full border border-white/5 bg-white/[0.01] shadow-[0_8px_32px_rgba(0,0,0,0.2)] backdrop-blur-md transition-all duration-500 overflow-hidden group-hover:border-white/20">
+          {/* Soft glow gradient inside the pedestal */}
+          <div
+            className="absolute inset-0 opacity-10 bg-gradient-to-t from-transparent to-white/10"
+          />
         </div>
-        
-        {/* Subtle bottom reflection/shadow */}
-        <div className="absolute -bottom-6 w-3/4 h-2 rounded-full bg-black/60 blur-md" />
-        
+
         {/* Colored glow reflection */}
-        <div 
-          className="absolute inset-0 rounded-full opacity-30 blur-2xl mix-blend-screen transition-opacity duration-500 group-hover:opacity-50"
+        <div
+          className="absolute inset-0 rounded-full opacity-20 blur-2xl mix-blend-screen transition-opacity duration-500 group-hover:opacity-40"
           style={{ backgroundColor: color }}
         />
 
         {/* Inner Ring */}
-        <div className="absolute inset-[3px] rounded-full border border-white/5 bg-gradient-to-b from-white/10 to-transparent shadow-inner" />
-
-        {/* Floating platform effect */}
-        <div className="absolute bottom-1 w-2/3 h-[2px] rounded-full bg-white/20 blur-[1px]" />
-
-        {/* Ambient Particles in Pod */}
-        <motion.div 
-          className="absolute w-1 h-1 rounded-full bg-white/60"
-          style={{ top: '20%', left: '20%' }}
-          animate={{ y: [0, -5, 0], opacity: [0.3, 0.8, 0.3] }}
-          transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div 
-          className="absolute w-1 h-1 rounded-full"
-          style={{ bottom: '25%', right: '25%', backgroundColor: color }}
-          animate={{ y: [0, 4, 0], opacity: [0.2, 0.6, 0.2] }}
-          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        />
+        <div className="absolute inset-[2px] rounded-full border border-white/5 bg-gradient-to-b from-white/5 to-transparent shadow-inner opacity-50" />
 
         {/* Logo */}
         <Icon
           size={SIZE_PX[node.size]}
-          className="relative z-10 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)] transition-all duration-300 group-hover:scale-110"
+          className="relative z-10 drop-shadow-[0_0_12px_rgba(255,255,255,0.1)] transition-all duration-300 group-hover:opacity-100 opacity-80 group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]"
           color={color}
         />
       </motion.div>
@@ -222,30 +200,59 @@ function ConnectionLines({ nodes, mouseX, mouseY, scrollY, converge }: { nodes: 
   }, {} as Record<string, any>);
 
   return (
-    <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20 z-0">
+    <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20 z-[2]">
       {CONNECTIONS.map(({ from, to }) => {
         const p1 = positions[from];
         const p2 = positions[to];
         if (!p1 || !p2) return null;
-        
-        // Convert vw/vh to % for SVG
+
+        // Boomerang curve (soft bezier)
+        const midX = (p1.x + p2.x) / 2 + 10;
+        const midY = (p1.y + p2.y) / 2 - 10;
+
         return (
-          <motion.path
-            key={`${from}-${to}`}
-            d={`M ${p1.x}% ${p1.y}% Q ${p1.x}% ${p2.y}% ${p2.x}% ${p2.y}%`}
-            fill="none"
-            stroke="url(#lineGradient)"
-            strokeWidth="1.5"
-            strokeDasharray="4 8"
-            className="transition-all duration-1000"
-          />
+          <g key={`${from}-${to}`}>
+            <motion.path
+              d={`M ${p1.x}% ${p1.y}% Q ${midX}% ${midY}% ${p2.x}% ${p2.y}%`}
+              fill="none"
+              stroke="rgba(255,255,255,0.05)"
+              strokeWidth="1"
+              className="transition-all duration-1000"
+            />
+            {/* Boomerang Light Trail */}
+            <motion.path
+              d={`M ${p1.x}% ${p1.y}% Q ${midX}% ${midY}% ${p2.x}% ${p2.y}%`}
+              fill="none"
+              stroke="url(#boomerangGradient)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              className="transition-all duration-1000"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ 
+                pathLength: [0, 0.5, 1],
+                opacity: [0, 0.5, 0],
+                pathOffset: [0, 0.5, 1]
+              }}
+              transition={{
+                duration: 4 + Math.random() * 3,
+                repeat: Infinity,
+                ease: "linear",
+                delay: Math.random() * 2
+              }}
+            />
+          </g>
         );
       })}
       <defs>
         <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="rgba(255,255,255,0.1)" />
-          <stop offset="50%" stopColor="rgba(255,255,255,0.4)" />
-          <stop offset="100%" stopColor="rgba(255,255,255,0.1)" />
+          <stop offset="0%" stopColor="rgba(255,255,255,0.05)" />
+          <stop offset="50%" stopColor="rgba(255,255,255,0.2)" />
+          <stop offset="100%" stopColor="rgba(255,255,255,0.05)" />
+        </linearGradient>
+        <linearGradient id="boomerangGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="rgba(0, 229, 255, 0)" />
+          <stop offset="50%" stopColor="rgba(0, 229, 255, 0.8)" />
+          <stop offset="100%" stopColor="rgba(0, 229, 255, 0)" />
         </linearGradient>
       </defs>
     </svg>
@@ -310,15 +317,16 @@ export function EngineeringEcosystem() {
   return (
     <div className="fixed inset-0 pointer-events-none z-[1] overflow-hidden">
       {/* Deep background ambient particles */}
-      <div className="absolute inset-0 opacity-40">
+      <div className="absolute inset-0 z-[1] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+      <div className="absolute inset-0 opacity-20 z-[1]">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[128px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[128px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[128px]" />
       </div>
 
-      <ConnectionLines 
-        nodes={ECOSYSTEM_BASE} 
-        mouseX={mousePos.x} 
-        mouseY={mousePos.y} 
+      <ConnectionLines
+        nodes={ECOSYSTEM_BASE}
+        mouseX={mousePos.x}
+        mouseY={mousePos.y}
         scrollY={scrollY}
         converge={converge}
       />

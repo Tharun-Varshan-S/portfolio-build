@@ -11,7 +11,7 @@
   --color-warning: var(--warning);
   --color-error: var(--error);
   --color-muted: var(--muted);
-  
+
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
 }
@@ -22,7 +22,7 @@
     --card: #F4F4F5;
     --border: #E4E4E7;
     --foreground: #09090B;
-    
+
     --primary: #09090B;
     --secondary: #3B82F6;
     --success: #22C55E;
@@ -36,7 +36,7 @@
     --card: #111113;
     --border: #27272A;
     --foreground: #FAFAFA;
-    
+
     --primary: #FAFAFA;
     --secondary: #3B82F6;
     --success: #22C55E;
@@ -48,6 +48,7 @@
   html {
     scroll-behavior: smooth;
   }
+
   body {
     background-color: var(--background);
     color: var(--foreground);
@@ -59,7 +60,7 @@
 /* Premium Vercel-like grid */
 .cyber-grid {
   background-size: 40px 40px;
-  background-image: 
+  background-image:
     linear-gradient(to right, var(--border) 1px, transparent 1px),
     linear-gradient(to bottom, var(--border) 1px, transparent 1px);
   mask-image: radial-gradient(circle at center, black, transparent 80%);
@@ -79,13 +80,11 @@
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: radial-gradient(
-    400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
-    var(--secondary),
-    transparent 40%
-  );
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
+  background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+      var(--secondary),
+      transparent 40%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -99,11 +98,9 @@
 }
 
 .spotlight-glow {
-  background: radial-gradient(
-    600px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
-    rgba(161, 161, 170, 0.05),
-    transparent 40%
-  );
+  background: radial-gradient(600px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+      rgba(161, 161, 170, 0.05),
+      transparent 40%);
   pointer-events: none;
 }
 
@@ -125,3 +122,8 @@
   background: var(--muted);
 }
 
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}

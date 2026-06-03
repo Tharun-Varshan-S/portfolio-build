@@ -77,7 +77,7 @@ export function ResumeSection() {
       points: [
         "Built a full-stack AI-Powered Technical Interview Platform that parses resumes and dynamically generates technical questions via Gemini AI.",
         "Architected an Intelligent Data Error Mitigation Engine in Python to automate detection of missing values, outliers, and data imbalances.",
-        "Designed and deployed 'LifeBridge' organ donation hub using role-based access controls and geo-aware hospital matching.",
+        "Designed and deployed 'Organ Donation System' using role-based access controls and geo-aware hospital matching.",
         "Solved over 1,380+ algorithms across LeetCode (500+ solved, rating 1678), SkillRack (750+), and CodeChef (130+)."
       ]
     }
