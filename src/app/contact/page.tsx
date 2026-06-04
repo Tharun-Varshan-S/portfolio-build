@@ -12,7 +12,7 @@ export default function ContactPage() {
     e.preventDefault()
     if (!form.name || !form.email || !form.message) return
     setStatus("sending")
-    
+
     // Simulate API transport latency
     setTimeout(() => {
       setStatus("success")
@@ -21,14 +21,14 @@ export default function ContactPage() {
   }
 
   const channels = [
-    { name: "Direct Email", value: "tharunvarshans@gmail.com", href: "mailto:tharunvarshans@gmail.com", icon: Mail },
+    { name: "Direct Email", value: "tharunvarshan.s087@gmail.com", href: "mailto:tharunvarshan.s087@gmail.com", icon: Mail },
     { name: "LinkedIn Network", value: "in/tharun-varshan-s", href: "https://www.linkedin.com/in/tharun-varshan-s-ab1246333", icon: Briefcase },
     { name: "GitHub Workspace", value: "Tharun-Varshan-S", href: "https://github.com/Tharun-Varshan-S", icon: Code2 }
   ]
 
   return (
     <div className="min-h-screen py-32 px-6 max-w-6xl mx-auto w-full flex flex-col gap-16 relative z-10">
-      
+
       {/* Page Header */}
       <div className="flex flex-col gap-6 max-w-3xl">
         <h1 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight leading-none">
@@ -44,11 +44,11 @@ export default function ContactPage() {
 
       {/* Main Form vs Channels Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        
+
         {/* Left Side: Dynamic Contact Form */}
         <div className="lg:col-span-7 flex flex-col gap-6">
           <div className="p-8 rounded-2xl border border-border bg-card shadow-sm relative overflow-hidden">
-            
+
             {/* Header console indicator */}
             <div className="flex justify-between items-center pb-6 border-b border-border mb-6">
               <span className="text-sm font-semibold text-muted uppercase tracking-wider">Contact Form</span>
@@ -57,7 +57,7 @@ export default function ContactPage() {
             <form onSubmit={handleSubmit} className="flex flex-col gap-6 text-sm font-medium">
               <div className="flex flex-col gap-2">
                 <label className="text-muted">Name</label>
-                <input 
+                <input
                   type="text"
                   required
                   placeholder="e.g. John Doe"
@@ -69,7 +69,7 @@ export default function ContactPage() {
 
               <div className="flex flex-col gap-2">
                 <label className="text-muted">Email</label>
-                <input 
+                <input
                   type="email"
                   required
                   placeholder="e.g. john@example.com"
@@ -81,7 +81,7 @@ export default function ContactPage() {
 
               <div className="flex flex-col gap-2">
                 <label className="text-muted">Message</label>
-                <textarea 
+                <textarea
                   required
                   rows={4}
                   placeholder="Describe your project, timeline, or matching scopes..."
@@ -94,7 +94,7 @@ export default function ContactPage() {
               {/* Submit Buttons / Status Indicators */}
               <div className="pt-2">
                 {status === "success" ? (
-                  <motion.div 
+                  <motion.div
                     initial={{ scale: 0.95, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     className="p-4 rounded-lg bg-success/10 border border-success/20 text-success flex items-center gap-2.5"
@@ -108,7 +108,7 @@ export default function ContactPage() {
                     disabled={status === "sending"}
                     className="w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-foreground text-background shadow-sm hover:scale-[1.01] active:scale-[0.99] font-semibold rounded-lg transition-all duration-300 disabled:opacity-50"
                   >
-                    <Send className="w-4 h-4" /> 
+                    <Send className="w-4 h-4" />
                     {status === "sending" ? "Sending..." : "Send Message"}
                   </button>
                 )}
@@ -123,7 +123,7 @@ export default function ContactPage() {
           {channels.map((c) => {
             const Icon = c.icon
             return (
-              <a 
+              <a
                 key={c.name}
                 href={c.href}
                 target="_blank"

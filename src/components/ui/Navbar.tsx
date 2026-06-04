@@ -21,7 +21,7 @@ export function Navbar() {
     { name: "CONTACT", href: "/contact" }
   ]
 
-  // Track scroll depth to add blur styling
+  // Track scroll depth to add blur styling and reduce height
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 20) {
@@ -40,13 +40,16 @@ export function Navbar() {
   }, [pathname])
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "py-3 bg-background/80 backdrop-blur-md border-b border-border" : "py-5 bg-transparent"
-      }`}>
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      scrolled 
+        ? "py-3 bg-background/85 backdrop-blur-xl border-b border-border/80 shadow-sm" 
+        : "py-6 bg-transparent"
+    }`}>
+      <div className="max-w-[1700px] mx-auto px-6 flex items-center justify-between">
 
         {/* Branding: Personal Profile Style */}
         <Link href="/" className="flex items-center gap-4 group">
-          <div className="flex items-center justify-center w-9 h-9 rounded-lg border border-border bg-card text-xs font-mono font-bold text-primary group-hover:border-primary/50 transition-all duration-300 relative overflow-hidden">
+          <div className="flex items-center justify-center w-9 h-9 rounded-lg border border-border/80 bg-card/50 backdrop-blur-sm text-xs font-mono font-bold text-primary group-hover:border-primary/50 group-hover:bg-card transition-all duration-300 relative overflow-hidden">
             <span className="relative z-10">TVS</span>
             <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>
@@ -60,39 +63,60 @@ export function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop Anchor Menu */}
-        <div className="hidden lg:flex items-center gap-1 p-1 rounded-full border border-border bg-card/40 backdrop-blur-md relative">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href))
-            return (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={`relative px-4 py-2 font-mono text-[10px] tracking-widest transition-all duration-300 uppercase rounded-full group/navlink overflow-hidden ${isActive ? "text-white font-medium" : "text-muted hover:text-white"
+        {/* Center Section: AI Terminal Navigation Strip */}
+        <div className="hidden lg:flex flex-col justify-center translate-x-8">
+          <div className="text-[10px] font-mono text-muted/60 flex items-center gap-1 mb-2 ml-1 tracking-widest uppercase">
+            <span>$ navigate</span>
+            <motion.span
+              animate={{ opacity: [1, 0, 1] }}
+              transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+              className="inline-block w-1.5 h-1 bg-muted/60 align-bottom translate-y-[2px]"
+            />
+          </div>
+          <div className="flex items-center gap-7">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href))
+              
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`group/navlink relative flex items-center text-[11px] font-mono tracking-widest uppercase transition-all duration-300 ${
+                    isActive ? "text-white" : "text-muted hover:text-white/90 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"
                   }`}
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover/navlink:animate-[shimmer_1.5s_infinite]" />
-                {isActive && (
-                  <motion.div
-                    layoutId="active-nav"
-                    className="absolute inset-0 bg-white/[0.08] border border-white/[0.12] rounded-full z-[-1]"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
-                <span className="relative z-10">{link.name}</span>
-              </Link>
-            )
-          })}
+                >
+                  <span className={`transition-all duration-300 font-medium text-primary ${
+                    isActive ? "opacity-100 mr-2" : "opacity-0 -ml-4 mr-0 group-hover/navlink:opacity-60 group-hover/navlink:mr-2 group-hover/navlink:ml-0"
+                  }`}>
+                    {'>'}
+                  </span>
+                  
+                  <span className={`relative ${isActive ? "text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]" : ""}`}>
+                    {link.name}
+                  </span>
+                </Link>
+              )
+            })}
+          </div>
         </div>
 
-        {/* Action Button */}
-        <div className="hidden lg:flex items-center">
+        {/* Right Section: Action Button & System Status */}
+        <div className="hidden lg:flex items-center gap-6">
+          {/* Status Badge */}
+          <div className="flex items-center gap-2 text-[10px] font-mono text-muted/80 uppercase tracking-widest bg-card/30 px-3 py-1.5 rounded-full border border-border/50">
+            <div className="relative flex items-center justify-center">
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/80 z-10" />
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/40 absolute animate-ping" />
+            </div>
+            System Online
+          </div>
+
           <Link
             href="/contact"
-            className="group px-4 py-2 rounded-lg bg-primary/10 border border-primary/20 text-primary text-xs font-mono uppercase hover:bg-primary/25 hover:border-primary/50 active:scale-[0.98] transition-all duration-300 flex items-center gap-1.5 relative overflow-hidden"
+            className="group px-4 py-2.5 rounded-lg bg-card/40 border border-border/80 text-primary text-[11px] font-mono uppercase tracking-wider hover:bg-primary/10 hover:border-primary/40 active:scale-[0.98] transition-all duration-300 flex items-center gap-2 relative overflow-hidden backdrop-blur-sm shadow-sm"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
-            <span className="relative z-10">Initiate Contact</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+            <span className="relative z-10">Open Channel</span>
             <ArrowUpRight className="w-3.5 h-3.5 relative z-10 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
           </Link>
         </div>
@@ -115,8 +139,16 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 right-0 border-b border-border bg-background/95 backdrop-blur-lg px-6 py-6 lg:hidden flex flex-col gap-6"
+            className="absolute top-full left-0 right-0 border-b border-border bg-background/95 backdrop-blur-xl px-6 py-6 lg:hidden flex flex-col gap-6 shadow-xl"
           >
+            <div className="text-[10px] font-mono text-muted/60 flex items-center gap-1 mb-1 tracking-widest uppercase">
+              <span>$ system.navigate</span>
+              <motion.span
+                animate={{ opacity: [1, 0, 1] }}
+                transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                className="inline-block w-1.5 h-1 bg-muted/60 align-bottom translate-y-[2px]"
+              />
+            </div>
             <div className="flex flex-col gap-3">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href))
@@ -124,25 +156,33 @@ export function Navbar() {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className={`flex items-center justify-between p-3 rounded-lg border font-mono text-xs tracking-wider uppercase transition-all duration-300 ${isActive
-                        ? "bg-primary/5 border-primary/20 text-primary"
+                    className={`flex items-center p-3 rounded-lg border font-mono text-xs tracking-wider uppercase transition-all duration-300 ${isActive
+                        ? "bg-primary/5 border-primary/20 text-white"
                         : "bg-card/30 border-transparent text-muted hover:text-white hover:bg-card/50"
                       }`}
                   >
-                    <span>{link.name}</span>
-                    {isActive && <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />}
+                    <span className={`mr-2 font-medium transition-opacity ${isActive ? "text-primary opacity-100" : "opacity-0"}`}>
+                      {'>'}
+                    </span>
+                    <span className={isActive ? "drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]" : ""}>{link.name}</span>
                   </Link>
                 )
               })}
             </div>
 
-            <Link
-              href="/contact"
-              className="w-full py-3 rounded-lg bg-primary/10 border border-primary/20 text-primary text-center text-xs font-mono uppercase hover:bg-primary/25 hover:border-primary/50 transition-all duration-300 flex items-center justify-center gap-1.5"
-            >
-              Initiate Contact
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
+            <div className="flex items-center justify-between mt-2 pt-4 border-t border-border/50">
+              <div className="flex items-center gap-2 text-[10px] font-mono text-muted/80 uppercase tracking-widest">
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/80 animate-pulse" />
+                System Online
+              </div>
+              <Link
+                href="/contact"
+                className="px-5 py-2.5 rounded-lg bg-primary/10 border border-primary/20 text-primary text-center text-xs font-mono uppercase hover:bg-primary/25 hover:border-primary/50 transition-all duration-300 flex items-center justify-center gap-1.5"
+              >
+                Open Channel
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
