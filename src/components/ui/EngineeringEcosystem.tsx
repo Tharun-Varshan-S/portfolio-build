@@ -117,7 +117,7 @@ function EcosystemPod({
   const opacityFocusMult = pageConfig.focus.length === 0 ? 1 : (isFocused ? 1.5 : 0.4);
 
   // Base opacities - near (layer 2) is clearer, far (layer 3) is more faded
-  const baseOp = node.layer === 2 ? 0.8 : 0.5;
+  const baseOp = node.layer === 2 ? 0.6 : 0.35;
 
   const finalOpacity = Math.min(1, Math.max(0, baseOp * node.opacityMult * pageConfig.visibilityMult * opacityFocusMult));
 
@@ -134,7 +134,7 @@ function EcosystemPod({
         y: '-50%',
         width: POD_SIZE[node.size],
         height: POD_SIZE[node.size],
-        zIndex: node.layer === 2 ? 20 : 10,
+        zIndex: node.layer === 2 ? 2 : 1,
       }}
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{
@@ -290,25 +290,28 @@ export function EngineeringEcosystem() {
   if (!mounted) return null;
 
   // Page config logic
-  let visibilityMult = 1.3; // Increased base visibility by 30%
+  let visibilityMult = 0.5; // Safe default for unmatched routes
   let focus: string[] = [];
   let converge = false;
 
   if (pathname === '/') {
-    visibilityMult = 1.3;
+    visibilityMult = 1.0;
+  } else if (pathname?.startsWith('/projects/')) {
+    // Project detail pages — heavily dim so logos don't clash with text
+    visibilityMult = 0.15;
   } else if (pathname === '/projects') {
     focus = ['React', 'Next.js', 'TypeScript', 'Node.js', 'FastAPI', 'MongoDB', 'PostgreSQL', 'Docker', 'AWS'];
-    visibilityMult = 0.8;
+    visibilityMult = 0.5;
   } else if (pathname === '/tech-stack') {
     focus = ['React', 'Next.js', 'TypeScript', 'Tailwind', 'Node.js', 'FastAPI', 'Python', 'MongoDB', 'PostgreSQL', 'Docker', 'Kubernetes', 'AWS', 'Linux', 'Git'];
-    visibilityMult = 1.0;
+    visibilityMult = 0.8;
   } else if (pathname === '/coding-profile') {
     focus = ['LeetCode', 'CodeChef', 'GitHub', 'Python', 'TypeScript'];
-    visibilityMult = 0.7;
+    visibilityMult = 0.5;
   } else if (pathname === '/resume') {
     visibilityMult = 0.1;
   } else if (pathname === '/contact') {
-    visibilityMult = 0.4;
+    visibilityMult = 0.3;
     converge = true;
   }
 
