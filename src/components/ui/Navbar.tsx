@@ -55,7 +55,7 @@ export function Navbar() {
               Tharun Varshan S
             </span>
             <span className="text-[10px] font-mono text-muted tracking-tight group-hover:text-white/60 transition-colors duration-300">
-              AI Systems Backend Engineer
+              AI-Powered Software Development Engineer
             </span>
           </div>
         </Link>

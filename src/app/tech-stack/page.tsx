@@ -27,66 +27,88 @@ export default function TechStackPage() {
     cat: "BACKEND STACK"
   })
 
-  // Grouped Infrastructure Layer Map
   const layers: InfrastructureCategory[] = [
     {
-      title: "Client & UI Layers",
-      subtitle: "FRONTEND",
-      icon: Code2,
-      color: "from-border to-transparent",
-      accent: "border-border text-foreground",
-      nodes: [
-        { name: "React.js", desc: "A component-based library for building highly interactive user interfaces.", relation: "Integrates React Flow canvases and handles dashboard states dynamically." },
-        { name: "Vite", desc: "A next-generation frontend toolchain providing ultra-fast compilation.", relation: "Speeds up client development compilation sequences." },
-        { name: "Tailwind CSS", desc: "A utility-first CSS styling framework designed for flexible layouts.", relation: "Applies glassmorphism models and micro-interaction spotlights." }
-      ]
-    },
-    {
-      title: "Backend Clusters",
-      subtitle: "BACKEND",
+      title: "Programming",
+      subtitle: "LANGUAGES",
       icon: Terminal,
       color: "from-border to-transparent",
       accent: "border-border text-foreground",
       nodes: [
-        { name: "TypeScript", desc: "A strongly-typed programming language providing complete type safety.", relation: "Validates incoming API scopes and enforces strict model compiler types." },
-        { name: "Node.js", desc: "An open-source, cross-platform JavaScript runtime environment.", relation: "Compiles REST controllers and processes parallel async worker scripts." },
-        { name: "Express.js", desc: "A fast, minimalist web framework for Node.js API development.", relation: "Handles routing structures and triggers secure auth controllers." }
+        { name: "C", desc: "Low-level system programming and procedural execution.", relation: "" },
+        { name: "C++", desc: "Object-oriented programming and competitive coding.", relation: "" },
+        { name: "Python", desc: "Machine learning workflows and general automation.", relation: "" },
+        { name: "Java", desc: "Enterprise application architectures and robust OOP design.", relation: "" },
+        { name: "JavaScript", desc: "Dynamic web functionality and client-side logic.", relation: "" }
       ]
     },
     {
-      title: "Data Operations",
+      title: "Frontend",
+      subtitle: "UI/UX",
+      icon: Code2,
+      color: "from-border to-transparent",
+      accent: "border-border text-foreground",
+      nodes: [
+        { name: "HTML", desc: "Semantic markup for structuring content.", relation: "" },
+        { name: "CSS", desc: "Visual styling and responsive layouts.", relation: "" },
+        { name: "React", desc: "Component-based library for building highly interactive UIs.", relation: "" },
+        { name: "Tailwind", desc: "Utility-first CSS styling framework designed for flexible layouts.", relation: "" },
+        { name: "Vite", desc: "Next-generation frontend toolchain providing ultra-fast compilation.", relation: "" }
+      ]
+    },
+    {
+      title: "Backend",
+      subtitle: "SERVER",
+      icon: Cloud,
+      color: "from-border to-transparent",
+      accent: "border-border text-foreground",
+      nodes: [
+        { name: "Node.js", desc: "Open-source, cross-platform JavaScript runtime environment.", relation: "" },
+        { name: "Express.js", desc: "Fast, minimalist web framework for Node.js API development.", relation: "" },
+        { name: "FastAPI", desc: "High-performance Python web framework for building APIs.", relation: "" }
+      ]
+    },
+    {
+      title: "Database",
       subtitle: "STORAGE",
       icon: Database,
       color: "from-border to-transparent",
       accent: "border-border text-foreground",
       nodes: [
-        { name: "MongoDB", desc: "A document-based database engine that stores data in JSON-like structures.", relation: "Holds account attributes and evaluation results." },
-        { name: "PostgreSQL", desc: "A high-performance relational SQL database engine with spatial modules.", relation: "Manages donor matrices utilizing geolocational index tables." },
-        { name: "Redis", desc: "An in-memory key-value data store used for low-latency session caching.", relation: "Caches active transaction counts and implements database queue locks." }
+        { name: "MongoDB", desc: "Document-based database engine that stores data in JSON-like structures.", relation: "" },
+        { name: "MySQL", desc: "Relational database management system for structured data.", relation: "" },
+        { name: "PostgreSQL", desc: "High-performance relational SQL database engine with spatial modules.", relation: "" }
       ]
     },
     {
-      title: "Intelligence & ML",
+      title: "Machine Learning",
       subtitle: "PROCESSING",
       icon: Cpu,
       color: "from-border to-transparent",
       accent: "border-border text-foreground",
       nodes: [
-        { name: "Gemini AI API", desc: "Google's deep multimodal LLM engine providing high-context parsing.", relation: "Generates custom engineering problems based on resume timelines." },
-        { name: "Scikit-Learn", desc: "A powerful Python library for machine learning algorithms and pipelines.", relation: "Orchestrates isolation forests for data outlier cleaning." },
-        { name: "Pandas & NumPy", desc: "Numerical data analysis blocks for Python scripts.", relation: "Transforms raw matrices and processes multi-dimensional tensors." }
+        { name: "Scikit-Learn", desc: "Machine learning algorithms and pipelines.", relation: "" },
+        { name: "Pandas", desc: "Data manipulation and analysis.", relation: "" },
+        { name: "NumPy", desc: "Numerical computing and multi-dimensional arrays.", relation: "" },
+        { name: "Matplotlib", desc: "Data visualization and plotting.", relation: "" },
+        { name: "Linear Regression", desc: "Predictive modeling for continuous variables.", relation: "" },
+        { name: "Logistic Regression", desc: "Classification algorithms for discrete outcomes.", relation: "" },
+        { name: "Random Forest", desc: "Ensemble learning method for classification and regression.", relation: "" },
+        { name: "K-Means", desc: "Unsupervised learning algorithm for clustering.", relation: "" }
       ]
     },
     {
-      title: "Cloud & Ops",
-      subtitle: "INFRASTRUCTURE",
-      icon: Cloud,
+      title: "Tools",
+      subtitle: "WORKSPACE",
+      icon: Network,
       color: "from-border to-transparent",
       accent: "border-border text-foreground",
       nodes: [
-        { name: "Git & GitHub", desc: "Version control systems managing collaborative code repositories.", relation: "Triggers automated continuous deployment sequences on commits." },
-        { name: "Vercel / Render", desc: "Cloud computing services hosting frontend and server nodes.", relation: "Deploys production runtimes under automated SSL locks." },
-        { name: "PostGIS Map", desc: "A spatial database extender module for PostgreSQL database engines.", relation: "Enables geographic coordinates distance calculations." }
+        { name: "GitHub", desc: "Version control and collaborative code repositories.", relation: "" },
+        { name: "VS Code", desc: "Extensible source code editor and IDE.", relation: "" },
+        { name: "Postman", desc: "API development, testing, and documentation platform.", relation: "" },
+        { name: "Google Colab", desc: "Hosted Jupyter notebook service for ML research.", relation: "" },
+        { name: "Jupyter Notebook", desc: "Interactive computing environments for data science.", relation: "" }
       ]
     }
   ]
@@ -170,17 +192,9 @@ export default function TechStackPage() {
                 <h3 className="text-3xl font-bold text-foreground tracking-tight">{hoveredTech.name}</h3>
                 <div className="h-0.5 w-12 bg-border rounded-full" />
                 <div className="flex flex-col gap-2">
-                  <span className="text-xs font-semibold text-muted uppercase tracking-wider">Specification</span>
+                  <span className="text-xs font-semibold text-muted uppercase tracking-wider">Experience Context</span>
                   <p className="text-base text-muted leading-relaxed">{hoveredTech.desc}</p>
                 </div>
-              </div>
-
-              <div className="flex flex-col gap-3 pt-6 border-t border-border">
-                <span className="text-xs font-semibold text-muted uppercase tracking-wider flex items-center gap-1">
-                  Dependency Link
-                  <ArrowRight className="w-4 h-4" />
-                </span>
-                <p className="text-base text-foreground leading-relaxed font-sans">{hoveredTech.relation}</p>
               </div>
 
             </motion.div>

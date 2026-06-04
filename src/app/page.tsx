@@ -16,12 +16,14 @@ const BOOT_SEQUENCE = [
 ]
 
 const CONSOLE_ITEMS = [
-  "> 500+ Problems Solved",
-  "> Rating 1678",
-  "> Winner - CoderAct",
-  "> Building AI Systems",
+  "> Solved 500+ coding problems",
+  "> Winner at CoderAct Hackathon",
+  "> Built AI Interview Platform",
+  "> Developed Error Mitigation System",
+  "> Built LifeBridge",
+  "> Exploring AI System Design",
   "> Learning Distributed Systems",
-  "> Deploying New Features"
+  "> Completed MERN Internship"
 ]
 
 export default function Home() {
@@ -172,7 +174,7 @@ export default function Home() {
                       transition={{ duration: 0.8, delay: 0.4 }}
                       className="text-xl md:text-2xl font-mono text-muted-foreground"
                     >
-                      AI Systems Backend Engineer
+                      AI-Powered Software Development Engineer
                     </motion.h2>
 
                     <motion.p
@@ -206,8 +208,8 @@ export default function Home() {
                       View Resume
                     </Link>
                     <a
-                      href="/Tharun_Varshan_S_Resume.pdf"
-                      target="_blank"
+                      href="/resume/Tharun_Varshan_Resume.pdf"
+                      download="Tharun_Varshan_Resume.pdf"
                       className="p-3 rounded-lg border border-border bg-card/50 hover:bg-card hover:border-foreground/20 text-muted hover:text-foreground transition-all backdrop-blur-sm"
                       title="Download Resume"
                     >

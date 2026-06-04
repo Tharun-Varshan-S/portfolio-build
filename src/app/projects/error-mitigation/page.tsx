@@ -43,7 +43,7 @@ export default function ErrorMitigationDetail() {
   ]
 
   return (
-    <div className="min-h-screen py-32 px-6 max-w-5xl mx-auto w-full flex flex-col gap-16 relative z-10">
+    <div className="min-h-screen py-24 px-6 max-w-[1700px] mx-auto w-full flex flex-col gap-12 relative z-10">
 
       {/* Back to Hub Link */}
       <div className="flex">

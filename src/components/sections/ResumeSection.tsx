@@ -20,7 +20,7 @@ import {
 export function ResumeSection() {
   const [activeTab, setActiveTab] = useState<"education" | "skills" | "achievements" | "experience">("education")
   const [copied, setCopied] = useState(false)
-  const curlCommand = "curl -O https://tharunvarshan.dev/resume.pdf"
+  const curlCommand = "curl -O https://tharunvarshan.dev/resume/Tharun_Varshan_Resume.pdf"
 
   const handleCopy = () => {
     navigator.clipboard.writeText(curlCommand)
@@ -39,27 +39,45 @@ export function ResumeSection() {
         "Active member of the programming & hackathon club",
         "Top tier academic consistency (8.35 CGPA)"
       ]
+    },
+    {
+      degree: "Higher Secondary Certificate (HSC)",
+      institution: "Peepal Prodigy School",
+      duration: "2022 - 2024",
+      cgpa: "92%",
+      highlights: [
+        "Completed higher secondary education with a focus on core sciences and mathematics."
+      ]
+    },
+    {
+      degree: "Secondary School Leaving Certificate (SSLC)",
+      institution: "Peepal Prodigy School",
+      duration: "2021 - 2022",
+      cgpa: "96%",
+      highlights: [
+        "Completed secondary education with high distinction."
+      ]
     }
   ]
 
   const skills = [
-    { category: "Programming Languages", list: ["C", "C++", "Python", "Java", "TypeScript", "SQL"] },
-    { category: "Backend & Systems", list: ["Node.js", "Express.js", "FastAPI", "RESTful APIs", "JWT Auth"] },
-    { category: "Frontend & UI", list: ["React.js", "Next.js", "Vite", "Tailwind CSS", "HTML5", "CSS3"] },
-    { category: "Databases", list: ["MongoDB", "MySQL", "PostgreSQL", "Redis"] },
-    { category: "AI & Machine Learning", list: ["Scikit-Learn", "Pandas", "NumPy", "Matplotlib", "Supervised/Unsupervised Learning"] },
-    { category: "Tools & DevOps", list: ["Git / GitHub", "Docker", "Postman", "Bash/Linux Shell", "VS Code", "Jupyter"] }
+    { category: "Programming", list: ["C", "C++", "Python", "Java", "JavaScript"] },
+    { category: "Web Technologies", list: ["HTML", "CSS", "JavaScript", "React", "Node.js", "Express.js", "Next.js", "Tailwind CSS"] },
+    { category: "Databases", list: ["MongoDB", "MySQL", "PostgreSQL"] },
+    { category: "Machine Learning", list: ["Linear Regression", "Logistic Regression", "K-Means", "Random Forest", "Scikit-Learn", "Pandas", "NumPy"] },
+    { category: "Tools", list: ["VS Code", "GitHub", "Postman", "Google Colab", "Jupyter Notebook", "Docker"] },
+    { category: "Core Concepts", list: ["Data Structures and Algorithms", "Problem Solving", "RESTful APIs", "JWT Auth"] }
   ]
 
   const achievements = [
     {
-      title: "Winner — CoderAct Hackathon",
+      title: "Winner — CoderAct",
       organization: "Sri Sakthi College of Engineering",
       description: "Ranked 1st place overall for conceptualising and deploying an innovative software solution under tight timelines."
     },
     {
-      title: "Best Team Spirit Award",
-      organization: "ICPC Regional",
+      title: "Best Team Spirit Award — ICPC",
+      organization: "Sri Eshwar College of Engineering",
       description: "Recognised at Sri Eshwar College of Engineering for excellent collaboration and algorithmic problem-solving endurance during the ICPC team challenge."
     },
     {
@@ -70,6 +88,17 @@ export function ResumeSection() {
   ]
 
   const experience = [
+    {
+      role: "MERN Stack Intern",
+      duration: "Dec 2025",
+      company: "Better Tomorrow",
+      points: [
+        "Developed full-stack web applications using MongoDB, Express.js, React.js, and Node.js (MERN stack).",
+        "Built and integrated RESTful APIs for efficient client-server communication.",
+        "Implemented modular and scalable backend architecture for maintainability.",
+        "Worked on database design, authentication, and deployment of web applications."
+      ]
+    },
     {
       role: "AI & Full-Stack Developer (Personal & Academic Projects)",
       duration: "2024 - Present",
@@ -129,14 +158,14 @@ export function ResumeSection() {
 
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <a
-                href="/Tharun_Varshan_Resume.pdf"
+                href="/resume/Tharun_Varshan_Resume.pdf"
                 download="Tharun_Varshan_Resume.pdf"
                 className="flex-1 flex items-center justify-center gap-2 px-5 py-3 bg-[#3B82F6] hover:bg-blue-600 text-white rounded-lg font-medium transition-all duration-300 shadow-lg shadow-blue-500/10 hover:shadow-blue-500/20 active:scale-[0.98]"
               >
                 <FileDown className="w-4 h-4" /> Download PDF
               </a>
               <a
-                href="/Tharun_Varshan_Resume.pdf"
+                href="/resume/Tharun_Varshan_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center gap-2 px-5 py-3 bg-transparent border border-border hover:bg-card text-white rounded-lg font-medium transition-colors active:scale-[0.98]"

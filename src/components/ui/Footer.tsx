@@ -49,7 +49,7 @@ export function Footer() {
               </span>
             </motion.h2>
             <motion.p variants={childVariants} className="text-base text-muted leading-relaxed max-w-md">
-              Actively exploring collaboration opportunities in AI systems, high-throughput distributed backends, database kernels, and applied machine learning architectures. Let's connect.
+              Actively exploring collaboration opportunities in AI-powered systems, high-throughput distributed backends, database kernels, and applied machine learning architectures. Let's connect.
             </motion.p>
           </div>
           
@@ -133,7 +133,7 @@ export function Footer() {
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-center sm:text-left">
             <span>© 2026 Tharun Varshan S.</span>
             <span className="hidden sm:inline text-border">|</span>
-            <span>AI Systems Backend Engineer</span>
+            <span>AI-Powered Software Development Engineer</span>
           </div>
           
           <button 

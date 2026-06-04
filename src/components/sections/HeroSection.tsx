@@ -15,7 +15,7 @@ export function HeroSection() {
           <div>
             <p className="text-muted font-mono text-xs mb-8">~ / THARUN.CLOUD / IDENTITY</p>
             <h1 className="text-5xl md:text-6xl font-bold mb-4 tracking-tight">Tharun Varshan S</h1>
-            <h2 className="text-xl md:text-2xl text-primary font-medium mb-6">AI Systems Backend Engineer</h2>
+            <h2 className="text-xl md:text-2xl text-primary font-medium mb-6">AI-Powered Software Development Engineer</h2>
             <p className="text-muted text-lg max-w-xl leading-relaxed mb-10">
               Building scalable AI systems, backend architectures, intelligent platforms, and production-ready applications.
             </p>
@@ -60,7 +60,7 @@ export function HeroSection() {
               <p className="text-muted font-mono text-[10px] uppercase">/ Current Focus</p>
               <Activity className="w-4 h-4 text-primary" />
             </div>
-            <h3 className="text-xl font-semibold mb-6">AI Systems Engineering</h3>
+            <h3 className="text-xl font-semibold mb-6">AI-Powered Software Engineering</h3>
 
             <div className="flex flex-col gap-4 text-sm text-muted">
               <div className="flex items-center gap-3">

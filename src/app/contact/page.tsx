@@ -22,7 +22,7 @@ export default function ContactPage() {
 
   const channels = [
     { name: "Direct Email", value: "tharunvarshans@gmail.com", href: "mailto:tharunvarshans@gmail.com", icon: Mail },
-    { name: "LinkedIn Network", value: "in/tharunvarshan", href: "https://linkedin.com/in/tharunvarshan", icon: Briefcase },
+    { name: "LinkedIn Network", value: "in/tharun-varshan-s", href: "https://www.linkedin.com/in/tharun-varshan-s-ab1246333", icon: Briefcase },
     { name: "GitHub Workspace", value: "Tharun-Varshan-S", href: "https://github.com/Tharun-Varshan-S", icon: Code2 }
   ]
 

@@ -18,7 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tharun Varshan S | AI Systems Backend Engineer",
+  title: "Tharun Varshan S | AI-Powered Software Development Engineer",
   description: "Building intelligent systems, scalable backends, and production-grade AI applications.",
 };
 

@@ -125,9 +125,11 @@ export default function SystemsHub() {
                   </p>
 
                   {/* Skill Badges */}
-                  <div className="flex flex-wrap gap-2.5 text-xs font-medium text-muted">
+                  <div className="flex flex-wrap gap-2.5 text-xs font-semibold text-foreground">
                     {sys.tags.map(t => (
-                      <span key={t} className="px-2.5 py-1 rounded bg-secondary text-secondary-foreground border border-border group-hover:border-foreground/10 transition-colors duration-300">{t}</span>
+                      <span key={t} className="px-3 py-1.5 rounded-full bg-background/50 backdrop-blur-md border border-foreground/20 shadow-[0_0_10px_rgba(255,255,255,0.02)] group-hover:border-primary/40 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all duration-300">
+                        {t}
+                      </span>
                     ))}
                   </div>
                 </div>

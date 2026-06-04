@@ -62,8 +62,8 @@ export default function ResumePage() {
             <a href="mailto:tharunvarshan.s2024aids@sece.ac.in" className="flex items-center gap-2 hover:text-foreground transition-colors break-all">
               <Mail className="w-4 h-4 text-muted print:text-blue-700" /> tharunvarshan.s2024aids@sece.ac.in
             </a>
-            <a href="https://linkedin.com/in/tharunvarshan" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-foreground transition-colors">
-              <ExternalLink className="w-4 h-4 text-muted print:text-blue-700" /> linkedin.com/in/tharunvarshan
+            <a href="https://www.linkedin.com/in/tharun-varshan-s-ab1246333" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-foreground transition-colors">
+              <ExternalLink className="w-4 h-4 text-muted print:text-blue-700" /> linkedin.com/in/tharun-varshan-s
             </a>
             <a href="https://github.com/Tharun-Varshan-S" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-foreground transition-colors">
               <Globe className="w-4 h-4 text-muted print:text-blue-700" /> github.com/Tharun-Varshan-S
@@ -125,6 +125,36 @@ export default function ResumePage() {
                 <span className="block font-bold text-foreground print:text-black mt-1">Score: 96%</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Section: Professional Experience */}
+        <div className="flex flex-col gap-4">
+          <h2 className="text-xl font-bold text-foreground flex items-center gap-2 border-b border-border pb-2 print:text-black print:border-black/20">
+            <Briefcase className="w-5 h-5 text-muted print:text-blue-700" />
+            Professional Experience
+          </h2>
+          <div className="flex flex-col gap-6">
+            <div className="flex justify-between items-start gap-4">
+              <div>
+                <h3 className="font-bold text-foreground text-base print:text-black">
+                  MERN Stack Intern
+                </h3>
+                <p className="text-sm font-medium text-muted print:text-blue-700">
+                  Better Tomorrow
+                </p>
+              </div>
+              <div className="text-right text-sm font-medium shrink-0 text-muted print:text-black">
+                <span>Dec 2025</span>
+              </div>
+            </div>
+            <ul className="list-disc pl-5 text-sm text-muted leading-relaxed flex flex-col gap-1.5 print:text-black/85 -mt-3">
+              <li>Developed full-stack applications using MongoDB, Express.js, React.js, and Node.js.</li>
+              <li>Built REST APIs for efficient client-server communication.</li>
+              <li>Worked on authentication and database design workflows.</li>
+              <li>Implemented scalable backend architecture for maintainability.</li>
+              <li>Participated in deployment workflows for web applications.</li>
+            </ul>
           </div>
         </div>
 
@@ -284,8 +314,8 @@ export default function ResumePage() {
               <Printer className="w-4 h-4" /> Print / Save PDF
             </button>
             <a 
-              href="/Tharun_Varshan_S_Resume.pdf" 
-              target="_blank"
+              href="/resume/Tharun_Varshan_Resume.pdf" 
+              download="Tharun_Varshan_Resume.pdf"
               className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-lg bg-foreground text-background hover:scale-[1.02] shadow-sm transition-all duration-300 text-sm font-medium"
             >
               <FileText className="w-4 h-4" /> Download PDF
