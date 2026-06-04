@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useCallback, useMemo, useEffect } from "react"
+import React, { useState, useCallback, useEffect } from "react"
 import { ReactFlow, Background, Controls, useNodesState, useEdgesState, Handle, Position, BaseEdge, getBezierPath, EdgeProps } from '@xyflow/react'
 import { motion, AnimatePresence } from "framer-motion"
 import { X, Terminal } from "lucide-react"
@@ -157,6 +157,18 @@ export function ProjectArchitecture({ projectId }: { projectId: string }) {
   const [nodes, setNodes, onNodesChange] = useNodesState(projectData?.nodes || []);
   const [edges, setEdges, onEdgesChange] = useEdgesState(projectData?.edges || []);
   const [activeNode, setActiveNode] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+
+    const updateIsMobile = () => setIsMobile(mediaQuery.matches);
+
+    updateIsMobile();
+    mediaQuery.addEventListener("change", updateIsMobile);
+
+    return () => mediaQuery.removeEventListener("change", updateIsMobile);
+  }, []);
 
   const onNodeMouseEnter = useCallback((_: any, node: any) => {
     setNodes((nds) =>
@@ -197,8 +209,8 @@ export function ProjectArchitecture({ projectId }: { projectId: string }) {
     <div className="flex flex-col gap-6 w-full">
       <h3 className="text-xl font-bold text-white uppercase tracking-tight">Interactive System Architecture</h3>
       
-      <div className="flex flex-col lg:flex-row gap-6 h-[600px] w-full">
-        <Card className="flex-1 h-full rounded-xl overflow-hidden relative border border-border group/arch">
+      <div className="flex flex-col lg:flex-row gap-6 w-full lg:h-[600px]">
+        <Card className="flex-1 min-h-[420px] lg:h-full rounded-xl overflow-hidden relative border border-border group/arch">
           <div className="absolute top-4 left-4 z-10 flex items-center gap-2 font-mono text-[10px] text-muted">
             <div className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-red-500" />
@@ -208,24 +220,30 @@ export function ProjectArchitecture({ projectId }: { projectId: string }) {
             <span className="ml-2">~/architecture/{projectId}.json</span>
           </div>
 
-          <ReactFlow
-            nodes={nodes}
-            edges={edges}
-            nodeTypes={nodeTypes}
-            edgeTypes={edgeTypes}
-            onNodesChange={onNodesChange}
-            onEdgesChange={onEdgesChange}
-            onNodeMouseEnter={onNodeMouseEnter}
-            onNodeMouseLeave={onNodeMouseLeave}
-            onNodeClick={onNodeClick}
-            fitView
-            colorMode="dark"
-            minZoom={0.5}
-            maxZoom={1.5}
-          >
-            <Background color="#1A2332" gap={16} />
-            <Controls className="!bg-[#0A0E17] !border-[#1A2332] !fill-white" />
-          </ReactFlow>
+          <div className="absolute inset-0 touch-none">
+            <ReactFlow
+              className="h-full w-full"
+              nodes={nodes}
+              edges={edges}
+              nodeTypes={nodeTypes}
+              edgeTypes={edgeTypes}
+              panOnDrag
+              zoomOnPinch
+              onNodesChange={onNodesChange}
+              onEdgesChange={onEdgesChange}
+              onNodeMouseEnter={onNodeMouseEnter}
+              onNodeMouseLeave={onNodeMouseLeave}
+              onNodeClick={onNodeClick}
+              nodesDraggable={!isMobile}
+              fitView
+              colorMode="dark"
+              minZoom={isMobile ? 0.14 : 0.18}
+              maxZoom={1.5}
+            >
+              <Background color="#1A2332" gap={16} />
+              <Controls className="!bg-[#0A0E17] !border-[#1A2332] !fill-white" />
+            </ReactFlow>
+          </div>
 
           <div className="absolute bottom-4 left-4 right-4 z-10 flex justify-between items-center text-[10px] font-mono pointer-events-none">
             <span className="text-muted">scroll to zoom · drag to pan · click nodes to inspect</span>
@@ -242,7 +260,7 @@ export function ProjectArchitecture({ projectId }: { projectId: string }) {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: 20, opacity: 0 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="w-full lg:w-[30%] h-full bg-card/30 backdrop-blur-md border border-border rounded-xl p-6 shadow-2xl flex flex-col overflow-y-auto"
+              className="w-full lg:w-[30%] min-h-[280px] lg:h-full bg-card/30 backdrop-blur-md border border-border rounded-xl p-6 shadow-2xl flex flex-col overflow-y-auto"
             >
               <div className="flex justify-between items-start mb-6">
                 <div className="flex flex-col gap-1">
@@ -298,7 +316,7 @@ export function ProjectArchitecture({ projectId }: { projectId: string }) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="w-full lg:w-[30%] h-full bg-card/10 backdrop-blur-sm border border-border/50 rounded-xl p-6 flex flex-col items-center justify-center text-center gap-4"
+              className="w-full lg:w-[30%] min-h-[280px] lg:h-full bg-card/10 backdrop-blur-sm border border-border/50 rounded-xl p-6 flex flex-col items-center justify-center text-center gap-4"
             >
               <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
                 <Terminal className="w-6 h-6 text-muted" />
